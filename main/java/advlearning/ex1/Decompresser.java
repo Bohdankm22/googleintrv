@@ -11,7 +11,8 @@ class Decompresser {
         while (result.contains("[")) {
             Matcher matcher = pattern.matcher(result);
             if (matcher.find()) {
-                result = result.replace(matcher.group(0), multipleString(Integer.parseInt(matcher.group(1)), matcher.group(2)));
+                result = result.replace(matcher.group(0), multipleString(Integer.parseInt(matcher.group(1)),
+                        matcher.group(2)));
             } else {
                 throw new RuntimeException("Could not find any decompressed literals");
             }
@@ -30,7 +31,9 @@ class Decompresser {
 
 class Main {
     public static void main(String[] args) {
-        String decoded = "3[a2[k]bc]";
-        System.out.printf("Decoded string is %s, encoded is %s", decoded, Decompresser.decompressString(decoded));
+        if (args.length < 1) {
+            throw new RuntimeException("The decomposed string was not provided");
+        }
+        System.out.printf("Decoded string is %s, encoded is %s", args[0], Decompresser.decompressString(args[0]));
     }
 }
