@@ -6,8 +6,11 @@ import java.util.regex.Pattern;
 class Decompresser {
 
     static String decompressString(String st) {
+        if (st == null) {
+            throw new RuntimeException("Please provide a non-null value");
+        }
         String result = st;
-        Pattern pattern = Pattern.compile("(\\d+)\\[([A-Za-z]+)]");
+        Pattern pattern = Pattern.compile("(\\d+)\\[([A-Za-z]*)]");
         while (result.contains("[")) {
             Matcher matcher = pattern.matcher(result);
             if (matcher.find()) {
