@@ -1,54 +1,25 @@
 package advlearning.ex1;
 
-public class Decompresser {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-    public static String decompressString(String st) {
-        StringBuilder sb = new StringBuilder();
-        char[] chArr = st.toCharArray();
-        for (int i = 0; i < chArr.length; i++) {
-            if (chArr[i] == ']' || chArr[i] == '[') {
-                // ignore
-            } else if (Character.isDigit(chArr[i])) {
-                sb.append(decompressString(st.substring(i + 1), Character.getNumericValue(chArr[i])));
-            } else if (Character.isLetter(chArr[i])) {
-                sb.append(chArr[i]);
-            } else {
-                throw new RuntimeException("Could not find exit from method!");
-            }
+class Decompresser {
+
+    static String decompressString(String st) {
+        String result = st;
+        Pattern pattern = Pattern.compile("(\\d+)\\[([A-Za-z]+)]");
+        while (result.contains("[")) {
+            Matcher matcher = pattern.matcher(result);
+            matcher.find();
+            result = result.replace(matcher.group(0), multipleString(Integer.parseInt(matcher.group(1)), matcher.group(2)));
         }
-        return sb.toString();
+        return result;
     }
 
-    private static String decompressString(String st, int numb) {
+    private static CharSequence multipleString(int numb, String group) {
         StringBuilder sb = new StringBuilder();
-        char[] chArr = st.toCharArray();
-        if (chArr[0] == '[') {
-            for (int j = 0; j < numb - 1; j++) {
-                sb.append(decompressInternal(st.substring(1)));
-            }
-            return sb.toString();
-        } else if (Character.isDigit(chArr[0])) {
-            return decompressString(st.substring(1), numb * 10 + Character.getNumericValue(chArr[0]));
-        } else {
-            throw new RuntimeException("Could not find exit from method!");
-        }
-    }
-
-    private static String decompressInternal(String st) {
-        StringBuilder sb = new StringBuilder();
-        char[] chArr = st.toCharArray();
-        for (int i = 0; i < chArr.length; i++) {
-            if (chArr[i] == ']') {
-                return sb.toString();
-            } else if (Character.isDigit(chArr[i])) {
-                sb.append(decompressString(st.substring(i + 1), Character.getNumericValue(chArr[i])));
-            } else if (Character.isLetter(chArr[i])) {
-                sb.append(chArr[i]);
-            } else if (chArr[i] == ']') {
-                // ignore
-            } else {
-                throw new RuntimeException("Could not find exit from method!");
-            }
+        for (int i = 0; i < numb; i++) {
+            sb.append(group);
         }
         return sb.toString();
     }
@@ -56,7 +27,7 @@ public class Decompresser {
 
 class Main {
     public static void main(String[] args) {
-        String decoded = "3[a2[k]bc]4[ab]c";
+        String decoded = "3[a2[k]bc]";
         System.out.printf("Decoded string is %s, encoded is %s", decoded, Decompresser.decompressString(decoded));
     }
 }

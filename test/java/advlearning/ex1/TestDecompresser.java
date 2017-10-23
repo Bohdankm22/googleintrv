@@ -12,7 +12,14 @@ public class TestDecompresser {
     }
 
     @Test
+    public void testLongNumb() {
+        assertEquals("Simple check should be equals",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                Decompresser.decompressString("111[a]"));
+    }
+
+    @Test
     public void testInternalCompression() {
-        assertEquals("Simple check should be equals", "abcabcabcababababc", Decompresser.decompressString("3[a2[k]bc]4[ab]c"));
+        assertEquals("Simple check should be equals", "akkbcakkbcakkbcababababc", Decompresser.decompressString("3[a2[k]bc]4[ab]c"));
     }
 }
