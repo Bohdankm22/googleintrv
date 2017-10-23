@@ -10,8 +10,11 @@ class Decompresser {
         Pattern pattern = Pattern.compile("(\\d+)\\[([A-Za-z]+)]");
         while (result.contains("[")) {
             Matcher matcher = pattern.matcher(result);
-            matcher.find();
-            result = result.replace(matcher.group(0), multipleString(Integer.parseInt(matcher.group(1)), matcher.group(2)));
+            if (matcher.find()) {
+                result = result.replace(matcher.group(0), multipleString(Integer.parseInt(matcher.group(1)), matcher.group(2)));
+            } else {
+                throw new RuntimeException("Could not find any decompressed literals");
+            }
         }
         return result;
     }
