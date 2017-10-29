@@ -7,17 +7,34 @@ import static org.junit.Assert.assertEquals;
 public class TestMyArrayList {
 
     @Test
-    public void testStringInput() {
+    public void testAddStringInput() {
         MyArrayList<String> test = new MyArrayList<>();
         String testArg = "test";
-        assertEquals("Simple check should be equals", test.add(testArg), true);
+        assertEquals("Could not add element.", test.add(testArg), true);
     }
 
     @Test
-    public void testIntegerInput() {
+    public void testAddIntegerInput() {
         MyArrayList<Integer> test = new MyArrayList<>();
         int testArg = Integer.MAX_VALUE;
-        assertEquals("Simple check should be equals", test.add(testArg), true);
+        assertEquals("Could not add element.", test.add(testArg), true);
+    }
+
+    @Test
+    public void testGetStringInput() {
+        MyArrayList<String> test = new MyArrayList<>();
+        String testArg = "test";
+        assertEquals("Could not add element.", test.add(testArg), true);
+        assertEquals("Could not get element that was added.", test.get(), testArg);
+    }
+
+    @Test
+    public void testGetIntegerInput() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        int testArg = Integer.MAX_VALUE;
+        assertEquals("Could not add element.", test.add(testArg), true);
+        int result = test.get();
+        assertEquals("Could not get element that was added.", result, testArg);
     }
 
 }
