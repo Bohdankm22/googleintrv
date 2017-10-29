@@ -1,6 +1,7 @@
 package datastructure.list;
 
 import datastructure.exceptions.NoElementAtPositionException;
+import datastructure.exceptions.NotAccessiblePositionException;
 
 public class MyArrayList<T> {
 
@@ -17,13 +18,36 @@ public class MyArrayList<T> {
 
     public boolean add(T item) {
         internalArray[++lastElementPosition] = item;
+        resize();
+        return true;
+    }
+
+    public boolean add(int position, T item) {
+        if (position < 0 || position > lastElementPosition + 1) {
+            throw new NotAccessiblePositionException(position, size());
+        }
+        lastElementPosition++;
+        System.arraycopy(internalArray, position, internalArray, position + 1, lastElementPosition - position);
+        internalArray[position] = item;
+        resize();
+        return true;
+    }
+
+    public boolean addFirst(T item) {
+        return add(0, item);
+    }
+
+    public T removeFirst() {
+        return remove(0);
+    }
+
+    private void resize() {
         if (Math.round((double) lastElementPosition / arraySize) == 1) {
             arraySize = (int) Math.round(arraySize * 1.5);
             Object[] tmp = new Object[arraySize];
             System.arraycopy(internalArray, 0, tmp, 0, lastElementPosition + 1);
             internalArray = tmp;
         }
-        return true;
     }
 
     public T get() {
@@ -35,6 +59,10 @@ public class MyArrayList<T> {
             throw new NoElementAtPositionException(position, lastElementPosition);
         }
         return (T) internalArray[position];
+    }
+
+    public T getFirst() {
+        return get(0);
     }
 
     public int size() {
@@ -56,10 +84,7 @@ public class MyArrayList<T> {
             throw new NoElementAtPositionException(position, lastElementPosition);
         }
         T elem = (T) internalArray[position];
-        Object[] tmp = new Object[arraySize];
-        System.arraycopy(internalArray, 0, tmp, 0, position);
-        System.arraycopy(internalArray, position + 1, tmp, position, lastElementPosition - position);
-        internalArray = tmp;
+        System.arraycopy(internalArray, position + 1, internalArray, position, lastElementPosition - position);
         lastElementPosition--;
         return elem;
     }

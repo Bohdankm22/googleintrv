@@ -1,11 +1,10 @@
 package datastructure.list;
 
 import datastructure.exceptions.NoElementAtPositionException;
+import datastructure.exceptions.NotAccessiblePositionException;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class TestMyArrayList {
 
@@ -145,7 +144,7 @@ public class TestMyArrayList {
         MyArrayList<Integer> test = new MyArrayList<>();
         int[] elements = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int addedElem = 6;
-        for (int i: elements) {
+        for (int i : elements) {
             if (i != addedElem) {
                 test.add(i);
             }
@@ -184,6 +183,40 @@ public class TestMyArrayList {
             assertEquals("Element is not in place!", false, test.isEmpty());
             test.remove();
             assertEquals("Element is not in place!", true, test.isEmpty());
+        }
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddItemToWrongPosition() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        int testArg = Integer.MAX_VALUE;
+        assertEquals("Should be not able to add elem to this position.", true, test.add(1, testArg));
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddItemToNegativePosition() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        int testArg = Integer.MAX_VALUE;
+        assertEquals("Should be not able to add elem to this position.", true, test.add(-1, testArg));
+    }
+
+    @Test
+    public void testAddItemWithPositioning() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            assertEquals("Size of the list is not right.", i, test.size());
+            test.add(0, i);
+        }
+    }
+
+    @Test
+    public void testAddFirst() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            assertEquals("Size of the list is not right.", i, test.size());
+            test.addFirst(i);
+            int result = test.getFirst();
+            assertEquals("Element is not right.", i, result);
         }
     }
 }
