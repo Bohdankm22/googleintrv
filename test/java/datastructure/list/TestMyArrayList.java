@@ -167,8 +167,8 @@ public class TestMyArrayList {
     @Test
     public void testCapacity() {
         MyArrayList<Integer> test = new MyArrayList<>();
-        int initCapacity = 12;
-        for (int i = 0; i < 7; i++) {
+        int initCapacity = 16;
+        for (int i = 0; i < 9; i++) {
             assertEquals("Element is not in place!", initCapacity, test.capacity());
             test.add(i);
         }

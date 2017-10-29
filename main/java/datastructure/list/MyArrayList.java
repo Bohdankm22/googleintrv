@@ -4,7 +4,7 @@ import datastructure.exceptions.NoElementAtPositionException;
 
 public class MyArrayList<T> {
 
-    private static final int DEFAULT_ARRAY_INIT_SIZE = 12;
+    private static final int DEFAULT_ARRAY_INIT_SIZE = 16;
     private Object[] internalArray;
     private int lastElementPosition;
     private int arraySize;
