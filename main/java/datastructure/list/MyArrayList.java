@@ -17,7 +17,7 @@ public class MyArrayList<T> {
 
     public boolean add(T item) {
         internalArray[++lastElementPosition] = item;
-        if (lastElementPosition / arraySize == 1) {
+        if (Math.round((double) lastElementPosition / arraySize) == 1) {
             arraySize = (int) Math.round(arraySize * 1.5);
             Object[] tmp = new Object[arraySize];
             System.arraycopy(internalArray, 0, tmp, 0, lastElementPosition + 1);
@@ -39,5 +39,24 @@ public class MyArrayList<T> {
 
     public int size() {
         return lastElementPosition + 1;
+    }
+
+    public T remove() {
+        T elem = (T) internalArray[lastElementPosition];
+        internalArray[lastElementPosition--] = null;
+        return elem;
+    }
+
+    public T remove(int position) {
+        if (position < 0 || position > lastElementPosition) {
+            throw new NoElementAtPositionException(position, lastElementPosition);
+        }
+        T elem = (T) internalArray[lastElementPosition];
+        Object[] tmp = new Object[arraySize];
+        System.arraycopy(internalArray, 0, tmp, 0, position);
+        System.arraycopy(internalArray, position + 1, tmp, position, lastElementPosition - position);
+        internalArray = tmp;
+        lastElementPosition--;
+        return elem;
     }
 }
