@@ -4,6 +4,7 @@ import datastructure.exceptions.NoElementAtPositionException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 public class TestMyArrayList {
@@ -118,5 +119,71 @@ public class TestMyArrayList {
         MyArrayList<Integer> test = new MyArrayList<>();
         int position = 0;
         assertNull("Getting element from empty list should return exception!", test.get(position));
+    }
+
+    @Test
+    public void testRemoveByPositionList() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            test.add(i);
+        }
+        for (int i = 50; i < 60; i++) {
+            int removedItem = test.remove(i);
+            int actualValue = test.get(i);
+            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
+
+        }
+        while (test.size() - 1 > 0) {
+            int removedItem = test.remove(0);
+            int actualValue = test.get(0);
+            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
+        }
+    }
+
+    @Test
+    public void testElementsPositionsOnTheList() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        int[] elements = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int addedElem = 6;
+        for (int i: elements) {
+            if (i != addedElem) {
+                test.add(i);
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            int actValue = test.get(i);
+            assertEquals("Element is not in place!", elements[i], actValue);
+        }
+
+        for (int i = 7; i < elements.length; i++) {
+            int actValue = test.get(i - 1);
+            assertEquals("Element is not in place!", elements[i], actValue);
+        }
+
+        test.remove();
+    }
+
+    @Test
+    public void testCapacity() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        int initCapacity = 12;
+        for (int i = 0; i < 7; i++) {
+            assertEquals("Element is not in place!", initCapacity, test.capacity());
+            test.add(i);
+        }
+        assertEquals("Element is not in place!", Math.round(initCapacity * 1.5), test.capacity());
+    }
+
+    @Test
+    public void testIsEmpty() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        assertEquals("Element is not in place!", true, test.isEmpty());
+        for (int i = 0; i < 5; i++) {
+            test.add(0);
+            assertEquals("Element is not in place!", false, test.isEmpty());
+            test.remove();
+            assertEquals("Element is not in place!", true, test.isEmpty());
+        }
     }
 }

@@ -41,6 +41,10 @@ public class MyArrayList<T> {
         return lastElementPosition + 1;
     }
 
+    public int capacity() {
+        return arraySize;
+    }
+
     public T remove() {
         T elem = (T) internalArray[lastElementPosition];
         internalArray[lastElementPosition--] = null;
@@ -51,12 +55,16 @@ public class MyArrayList<T> {
         if (position < 0 || position > lastElementPosition) {
             throw new NoElementAtPositionException(position, lastElementPosition);
         }
-        T elem = (T) internalArray[lastElementPosition];
+        T elem = (T) internalArray[position];
         Object[] tmp = new Object[arraySize];
         System.arraycopy(internalArray, 0, tmp, 0, position);
         System.arraycopy(internalArray, position + 1, tmp, position, lastElementPosition - position);
         internalArray = tmp;
         lastElementPosition--;
         return elem;
+    }
+
+    public boolean isEmpty() {
+        return lastElementPosition == -1;
     }
 }
