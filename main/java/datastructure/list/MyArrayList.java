@@ -1,5 +1,7 @@
 package datastructure.list;
 
+import datastructure.exceptions.NoElementAtPositionException;
+
 public class MyArrayList<T> {
 
     private static final int DEFAULT_ARRAY_INIT_SIZE = 12;
@@ -25,6 +27,13 @@ public class MyArrayList<T> {
     }
 
     public T get() {
-        return lastElementPosition == -1 ? null : (T) internalArray[lastElementPosition];
+        return get(lastElementPosition);
+    }
+
+    public T get(int position) {
+        if (position < 0 || position > lastElementPosition) {
+            throw new NoElementAtPositionException(position, lastElementPosition);
+        }
+        return (T) internalArray[position];
     }
 }
