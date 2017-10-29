@@ -36,4 +36,8 @@ public class MyArrayList<T> {
         }
         return (T) internalArray[position];
     }
+
+    public int size() {
+        return lastElementPosition + 1;
+    }
 }

@@ -9,8 +9,4 @@ public class NoElementAtPositionException extends RuntimeException {
     public NoElementAtPositionException(int position, int size) {
         super(String.format("There is no element at the position %d in list with size %d.", position, size));
     }
-
-    public NoElementAtPositionException(String message) {
-        super(message);
-    }
 }
