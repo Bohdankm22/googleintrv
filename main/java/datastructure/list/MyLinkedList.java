@@ -108,4 +108,12 @@ public class MyLinkedList<T> {
         return result;
     }
 
+    public T getFirst() {
+        return size() != 0 ? first.getElem() : null;
+    }
+
+    public T getLast() {
+        return size() != 0 ? last.getElem() : null;
+    }
+
 }

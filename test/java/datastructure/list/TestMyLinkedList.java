@@ -75,4 +75,26 @@ public class TestMyLinkedList {
         assertEquals("The element is not right.", 0, test.size());
         assertNull("The element should be null.", test.pop());
     }
+
+    @Test
+    public void testGetFirst() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        assertNull(test.getFirst());
+        for (int i = 0; i < 100; i++) {
+            test.add(i);
+        }
+        int result = test.getFirst();
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testGetLast() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        assertNull(test.getFirst());
+        for (int i = 0; i < 100; i++) {
+            test.add(i);
+        }
+        int result = test.getLast();
+        assertEquals(99, result);
+    }
 }
