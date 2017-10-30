@@ -1,5 +1,6 @@
 package datastructure.list;
 
+import datastructure.exceptions.NotAccessiblePositionException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -96,5 +97,44 @@ public class TestMyLinkedList {
         }
         int result = test.getLast();
         assertEquals(99, result);
+    }
+
+    @Test
+    public void testAddAtPosition() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            test.add(i);
+        }
+        test.add(45, 4444);
+        int result = test.get(45);
+        assertEquals(4444, result);
+        test.add(76, 4444);
+        result = test.get(76);
+        assertEquals(4444, result);
+        test.add(0, 4444);
+        result = test.get(0);
+        assertEquals(4444, result);
+        test.add(100, 4444);
+        result = test.get(100);
+        assertEquals(4444, result);
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddAtNotValidPosition() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        test.add(-1, 1);
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddAtExceededPosition() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        test.add(1, 1);
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddAtWrongPosition() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        test.add(0);
+        test.add(2, 1);
     }
 }

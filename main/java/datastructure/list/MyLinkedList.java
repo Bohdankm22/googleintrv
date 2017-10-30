@@ -1,6 +1,7 @@
 package datastructure.list;
 
 import datastructure.exceptions.NoElementAtPositionException;
+import datastructure.exceptions.NotAccessiblePositionException;
 
 public class MyLinkedList<T> {
 
@@ -114,6 +115,25 @@ public class MyLinkedList<T> {
 
     public T getLast() {
         return size() != 0 ? last.getElem() : null;
+    }
+
+    public boolean add(long position, T item) {
+        if (position < 0 || position > size()) {
+            throw new NotAccessiblePositionException(position, size() - 1);
+        } else if (position == size()) {
+            return add(item);
+        } else if (position == 0) {
+            return addFirst(item);
+        }
+        Node node = first;
+        for (int i = 0; i < position - 1; i++) {
+            node = node.getNext();
+        }
+        Node addedNode = new Node(item);
+        addedNode.setNext(node.getNext());
+        node.setNext(addedNode);
+        size++;
+        return true;
     }
 
 }
