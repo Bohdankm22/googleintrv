@@ -244,7 +244,7 @@ public class TestMyArrayList {
         MyArrayList<Integer> test = new MyArrayList<>();
         test.add(1);
         for (int i = 0; i < 10; i++) {
-            assertEquals("Element position should not be found.", i, test.find(1));
+            assertEquals("Element expected at position", i, test.find(1));
             test.addFirst(2);
         }
     }
@@ -254,8 +254,31 @@ public class TestMyArrayList {
         MyArrayList<Integer> test = new MyArrayList<>();
         test.add(1);
         for (int i = 0; i < 10; i++) {
-            assertEquals("Element position should not be found.", 0, test.find(1));
+            assertEquals("Element expected at position", 0, test.find(1));
             test.addFirst(1);
         }
+    }
+
+    @Test
+    public void testRemoveItem() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        Integer elem = 1;
+        test.add(elem);
+        boolean result = test.remove(elem);
+        assertEquals("Element should be removed", true, result);
+        assertEquals("Element should be removed", 0, test.size());
+    }
+
+    @Test
+    public void testRemoveMultipleItem() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        Integer elem = 1;
+        for (int i = 0; i < 100; i++) {
+            test.add(elem);
+        }
+        assertEquals("List size is wrong", 100, test.size());
+        boolean result = test.remove(elem);
+        assertEquals("Elements should be removed", true, result);
+        assertEquals("List size is wrong", 0, test.size());
     }
 }

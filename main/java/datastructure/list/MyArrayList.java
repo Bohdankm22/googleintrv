@@ -101,6 +101,15 @@ public class MyArrayList<T> {
         return elem;
     }
 
+    public boolean remove(T item) {
+        boolean removed = false;
+        while (find(item) != -1) {
+            remove(find(item));
+            removed = true;
+        }
+        return removed;
+    }
+
     public boolean isEmpty() {
         return lastElementPosition == -1;
     }
