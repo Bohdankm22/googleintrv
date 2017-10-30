@@ -34,4 +34,16 @@ public class TestMyLinkedList {
             assertEquals("The element is not right.", i, result);
         }
     }
+
+    @Test
+    public void testAddFirst() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            test.addFirst(i);
+        }
+        for (int i = 99, j = 0; i >= 0; i--, j++) {
+            int result = test.get(j);
+            assertEquals("The element is not right.", i, result);
+        }
+    }
 }

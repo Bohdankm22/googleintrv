@@ -47,7 +47,7 @@ public class MyLinkedList<T> {
 
     public boolean add(T item) {
         Node addedNode = new Node(item);
-        if (size == 0) {
+        if (size() == 0) {
             first = addedNode;
         } else {
             last.setNext(addedNode);
@@ -66,6 +66,18 @@ public class MyLinkedList<T> {
             node = node.getNext();
         }
         return node.getElem();
+    }
+
+    public boolean addFirst(T item) {
+        Node addedNode = new Node(item);
+        if (size() == 0) {
+            last = addedNode;
+        } else {
+            addedNode.setNext(first);
+        }
+        first = addedNode;
+        size++;
+        return true;
     }
 
 }
