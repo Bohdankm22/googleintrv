@@ -93,4 +93,19 @@ public class MyLinkedList<T> {
         return result;
     }
 
+    public T pop() {
+        T result = null;
+        if (size() != 0) {
+            Node node = first;
+            for (int i = 0; i < size() - 2; i++) {
+                node = node.getNext();
+            }
+            result = last.getElem();
+            last = size() != 1 ? node : null;
+            first = size() != 1 ? first : null;
+            size--;
+        }
+        return result;
+    }
+
 }

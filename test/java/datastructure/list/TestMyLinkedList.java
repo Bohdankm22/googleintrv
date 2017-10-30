@@ -19,8 +19,8 @@ public class TestMyLinkedList {
         MyLinkedList<Integer> test = new MyLinkedList<>();
         for (int i = 1; i < 100; i++) {
             test.add(i);
-            assertEquals("The list should be empty.", false, test.empty());
-            assertEquals("The list should have 0 elements.", i, test.size());
+            assertEquals("The list should not be empty.", false, test.empty());
+            assertEquals("The list should have proper size.", i, test.size());
         }
     }
 
@@ -60,5 +60,19 @@ public class TestMyLinkedList {
         }
         assertEquals("The element is not right.", 0, test.size());
         assertNull("The element is not right.", test.popFirst());
+    }
+
+    @Test
+    public void testPop() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            test.add(i);
+        }
+        for (int i = 99; i >= 0; i--) {
+            int result = test.pop();
+            assertEquals("The element is not right.", i, result);
+        }
+        assertEquals("The element is not right.", 0, test.size());
+        assertNull("The element should be null.", test.pop());
     }
 }
