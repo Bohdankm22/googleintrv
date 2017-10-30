@@ -231,4 +231,31 @@ public class TestMyArrayList {
             assertEquals("Element is not right.", i, result);
         }
     }
+
+    @Test
+    public void testFindNonExist() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        test.add(1);
+        assertEquals("Element position should not be found.", -1, test.find(2));
+    }
+
+    @Test
+    public void testFind() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        test.add(1);
+        for (int i = 0; i < 10; i++) {
+            assertEquals("Element position should not be found.", i, test.find(1));
+            test.addFirst(2);
+        }
+    }
+
+    @Test
+    public void testFindWithMultiple() {
+        MyArrayList<Integer> test = new MyArrayList<>();
+        test.add(1);
+        for (int i = 0; i < 10; i++) {
+            assertEquals("Element position should not be found.", 0, test.find(1));
+            test.addFirst(1);
+        }
+    }
 }

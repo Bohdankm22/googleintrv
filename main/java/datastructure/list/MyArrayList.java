@@ -108,4 +108,13 @@ public class MyArrayList<T> {
     public T pop() {
         return remove();
     }
+
+    public int find(T item) {
+        for (int i = 0; i < size(); i++) {
+            if (internalArray[i].equals(item)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
