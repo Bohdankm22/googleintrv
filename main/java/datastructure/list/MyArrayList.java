@@ -18,7 +18,7 @@ public class MyArrayList<T> {
 
     public boolean add(T item) {
         internalArray[++lastElementPosition] = item;
-        resize();
+        resizeOnAdd();
         return true;
     }
 
@@ -29,7 +29,7 @@ public class MyArrayList<T> {
         lastElementPosition++;
         System.arraycopy(internalArray, position, internalArray, position + 1, lastElementPosition - position);
         internalArray[position] = item;
-        resize();
+        resizeOnAdd();
         return true;
     }
 
@@ -41,13 +41,23 @@ public class MyArrayList<T> {
         return remove(0);
     }
 
-    private void resize() {
-        if (Math.round((double) lastElementPosition / arraySize) == 1) {
-            arraySize = (int) Math.round(arraySize * 1.5);
-            Object[] tmp = new Object[arraySize];
-            System.arraycopy(internalArray, 0, tmp, 0, lastElementPosition + 1);
-            internalArray = tmp;
+    private void resizeOnAdd() {
+        if (size() == arraySize) {
+            resize(arraySize * 2);
         }
+    }
+
+    private void resizeOnRemove() {
+        if (size() == arraySize / 4) {
+            resize(arraySize / 2);
+        }
+    }
+
+    private void resize(int newCapacity) {
+        arraySize = newCapacity;
+        Object[] tmp = new Object[arraySize];
+        System.arraycopy(internalArray, 0, tmp, 0, size());
+        internalArray = tmp;
     }
 
     public T get() {
@@ -76,6 +86,7 @@ public class MyArrayList<T> {
     public T remove() {
         T elem = (T) internalArray[lastElementPosition];
         internalArray[lastElementPosition--] = null;
+        resizeOnRemove();
         return elem;
     }
 
@@ -86,10 +97,15 @@ public class MyArrayList<T> {
         T elem = (T) internalArray[position];
         System.arraycopy(internalArray, position + 1, internalArray, position, lastElementPosition - position);
         lastElementPosition--;
+        resizeOnRemove();
         return elem;
     }
 
     public boolean isEmpty() {
         return lastElementPosition == -1;
+    }
+
+    public T pop() {
+        return remove();
     }
 }

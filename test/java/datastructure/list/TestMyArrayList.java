@@ -166,12 +166,24 @@ public class TestMyArrayList {
     @Test
     public void testCapacity() {
         MyArrayList<Integer> test = new MyArrayList<>();
-        int initCapacity = 16;
-        for (int i = 0; i < 9; i++) {
-            assertEquals("Element is not in place!", initCapacity, test.capacity());
+        int capacity = 16;
+        for (int i = 0; i < 16; i++) {
+            assertEquals("Element is not in place!", capacity, test.capacity());
             test.add(i);
         }
-        assertEquals("Element is not in place!", Math.round(initCapacity * 1.5), test.capacity());
+        assertEquals("Element is not in place!", Math.round(capacity * 2), test.capacity());
+        for (int i = 0; i < 8; i++) {
+            test.remove();
+        }
+        assertEquals("Element is not in place!", capacity, test.capacity());
+        for (int i = 0; i < 4; i++) {
+            test.remove();
+        }
+        assertEquals("Element is not in place!", capacity / 2, test.capacity());
+        for (int i = 0; i < 2; i++) {
+            test.remove();
+        }
+        assertEquals("Element is not in place!", capacity / 4, test.capacity());
     }
 
     @Test
