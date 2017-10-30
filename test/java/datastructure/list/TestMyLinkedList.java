@@ -3,6 +3,7 @@ package datastructure.list;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TestMyLinkedList {
 
@@ -45,5 +46,19 @@ public class TestMyLinkedList {
             int result = test.get(j);
             assertEquals("The element is not right.", i, result);
         }
+    }
+
+    @Test
+    public void testPopFirst() {
+        MyLinkedList<Integer> test = new MyLinkedList<>();
+        for (int i = 0; i < 100; i++) {
+            test.addFirst(i);
+        }
+        for (int i = 99; i >= 0; i--) {
+            int result = test.popFirst();
+            assertEquals("The element is not right.", i, result);
+        }
+        assertEquals("The element is not right.", 0, test.size());
+        assertNull("The element is not right.", test.popFirst());
     }
 }

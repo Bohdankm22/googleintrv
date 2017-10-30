@@ -80,4 +80,17 @@ public class MyLinkedList<T> {
         return true;
     }
 
+    public T popFirst() {
+        T result = null;
+        if (size() != 0) {
+            result = first.getElem();
+            first = first.getNext();
+            if (size() == 1) {
+                last = null;
+            }
+            size--;
+        }
+        return result;
+    }
+
 }
