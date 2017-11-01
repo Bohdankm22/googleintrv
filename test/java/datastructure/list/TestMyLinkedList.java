@@ -11,7 +11,7 @@ public class TestMyLinkedList {
     @Test
     public void testEmptySize() {
         MyLinkedList<Integer> test = new MyLinkedList<>();
-        assertEquals("The list should be empty.", true, test.empty());
+        assertEquals("The list should be isEmpty.", true, test.isEmpty());
         assertEquals("The list should have 0 elements.", 0, test.size());
     }
 
@@ -20,7 +20,7 @@ public class TestMyLinkedList {
         MyLinkedList<Integer> test = new MyLinkedList<>();
         for (int i = 1; i < 100; i++) {
             test.add(i);
-            assertEquals("The list should not be empty.", false, test.empty());
+            assertEquals("The list should not be isEmpty.", false, test.isEmpty());
             assertEquals("The list should have proper size.", i, test.size());
         }
     }

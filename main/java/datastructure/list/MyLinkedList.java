@@ -3,11 +3,11 @@ package datastructure.list;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
-public class MyLinkedList<T> {
+public class MyLinkedList<T> implements MyList<T> {
 
     private Node first;
     private Node last;
-    private long size;
+    private int size;
 
     private class Node {
         T elem;
@@ -38,14 +38,30 @@ public class MyLinkedList<T> {
         size = 0;
     }
 
-    public long size() {
+    @Override
+    public int size() {
         return size;
     }
 
-    public boolean empty() {
+    @Override
+    public T remove() {
+        return pop();
+    }
+
+    @Override
+    public T remove(int position) {
+        if (size() > 0 && position == 0) {
+            return removeFirst();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean isEmpty() {
         return size() == 0;
     }
 
+    @Override
     public boolean add(T item) {
         Node addedNode = new Node(item);
         if (size() == 0) {
@@ -58,7 +74,7 @@ public class MyLinkedList<T> {
         return true;
     }
 
-    public T get(long position) {
+    public T get(int position) {
         if (position < 0 || position >= size()) {
             throw new NoElementAtPositionException(position, size() - 1);
         }
@@ -79,6 +95,16 @@ public class MyLinkedList<T> {
         first = addedNode;
         size++;
         return true;
+    }
+
+    @Override
+    public T removeFirst() {
+        return null;
+    }
+
+    @Override
+    public T get() {
+        return getLast();
     }
 
     public T popFirst() {
@@ -117,7 +143,8 @@ public class MyLinkedList<T> {
         return size() != 0 ? last.getElem() : null;
     }
 
-    public boolean add(long position, T item) {
+    @Override
+    public boolean add(int position, T item) {
         if (position < 0 || position > size()) {
             throw new NotAccessiblePositionException(position, size() - 1);
         } else if (position == size()) {
@@ -135,5 +162,4 @@ public class MyLinkedList<T> {
         size++;
         return true;
     }
-
 }
