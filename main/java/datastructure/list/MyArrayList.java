@@ -70,6 +70,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public T get(int position) {
         if (position < 0 || position > lastElementPosition) {
             throw new NoElementAtPositionException(position, lastElementPosition);
@@ -90,6 +91,8 @@ public class MyArrayList<T> implements MyList<T> {
         return arraySize;
     }
 
+    @Override
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public T remove() {
         T elem = (T) internalArray[lastElementPosition];
         internalArray[lastElementPosition--] = null;
@@ -98,6 +101,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public T remove(int position) {
         if (position < 0 || position > lastElementPosition) {
             throw new NoElementAtPositionException(position, lastElementPosition);
