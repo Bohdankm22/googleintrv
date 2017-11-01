@@ -53,7 +53,17 @@ public class MyLinkedList<T> implements MyList<T> {
         if (size() > 0 && position == 0) {
             return removeFirst();
         }
-        return null;
+        if (position > size() - 1) {
+            throw new NoElementAtPositionException(position, size() - 1);
+        }
+        Node node = first;
+        for (int i = 0; i < position - 1; i++) {
+            node = node.getNext();
+        }
+        T result = node.getNext().getElem();
+        node.setNext(node.getNext().getNext());
+        size--;
+        return result;
     }
 
     @Override
@@ -107,7 +117,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     @Override
     public T removeFirst() {
-        return null;
+        return popFirst();
     }
 
     @Override
@@ -136,8 +146,8 @@ public class MyLinkedList<T> implements MyList<T> {
                 node = node.getNext();
             }
             result = last.getElem();
-            last = size() != 1 ? node : null;
-            first = size() != 1 ? first : null;
+            last = size() != 0 ? node : null;
+            first = size() != 0 ? first : null;
             size--;
         }
         return result;

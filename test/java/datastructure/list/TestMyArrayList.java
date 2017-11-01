@@ -42,43 +42,6 @@ public class TestMyArrayList {
     }
 
     @Test
-    public void testRemoveElemFromList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        int position = 0;
-        assertEquals("Could not add element.", true, test.add(testArg));
-        int result = test.remove(position);
-        assertEquals("Could not remove element that was added.", testArg, result);
-        assertEquals("Size after removing is not right!", 0, test.size());
-    }
-
-    @Test(expected = NoElementAtPositionException.class)
-    public void testRemoveByPositionFromEmptyList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int position = 0;
-        assertNull("Getting element from isEmpty list should return exception!", test.get(position));
-    }
-
-    @Test
-    public void testRemoveByPositionList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            test.add(i);
-        }
-        for (int i = 50; i < 60; i++) {
-            int removedItem = test.remove(i);
-            int actualValue = test.get(i);
-            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
-
-        }
-        while (test.size() - 1 > 0) {
-            int removedItem = test.remove(0);
-            int actualValue = test.get(0);
-            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
-        }
-    }
-
-    @Test
     public void testElementsPositionsOnTheList() {
         MyArrayList<Integer> test = new MyArrayList<>();
         int[] elements = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};

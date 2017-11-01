@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(value = Parameterized.class)
@@ -84,6 +85,40 @@ public class TestMyList {
         for (int i = 99; i >= 0; i--) {
             list.remove();
             assertEquals("Size after removing is not right!", i, list.size());
+        }
+    }
+
+    @Test
+    public void testRemoveElemFromList() {
+        int testArg = Integer.MAX_VALUE;
+        int position = 0;
+        assertEquals("Could not add element.", true, list.add(testArg));
+        int result = list.remove(position);
+        assertEquals("Could not remove element that was added.", testArg, result);
+        assertEquals("Size after removing is not right!", 0, list.size());
+    }
+
+    @Test(expected = NoElementAtPositionException.class)
+    public void testRemoveByPositionFromEmptyList() {
+        int position = 0;
+        list.get(position);
+    }
+
+    @Test
+    public void testRemoveByPositionList() {
+        for (int i = 0; i < 100; i++) {
+            list.add(i);
+        }
+        for (int i = 50; i < 60; i++) {
+            int removedItem = list.remove(i);
+            int actualValue = list.get(i);
+            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
+
+        }
+        while (list.size() - 1 > 0) {
+            int removedItem = list.remove(0);
+            int actualValue = list.get(0);
+            assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
         }
     }
 }
