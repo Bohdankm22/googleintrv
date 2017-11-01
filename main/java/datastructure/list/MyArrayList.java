@@ -3,7 +3,7 @@ package datastructure.list;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
-public class MyArrayList<T> {
+public class MyArrayList<T> implements MyList<T> {
 
     private static final int DEFAULT_ARRAY_INIT_SIZE = 16;
     private Object[] internalArray;
@@ -16,12 +16,14 @@ public class MyArrayList<T> {
         arraySize = DEFAULT_ARRAY_INIT_SIZE;
     }
 
+    @Override
     public boolean add(T item) {
         internalArray[++lastElementPosition] = item;
         resizeOnAdd();
         return true;
     }
 
+    @Override
     public boolean add(int position, T item) {
         if (position < 0 || position > lastElementPosition + 1) {
             throw new NotAccessiblePositionException(position, size());
@@ -33,10 +35,12 @@ public class MyArrayList<T> {
         return true;
     }
 
+    @Override
     public boolean addFirst(T item) {
         return add(0, item);
     }
 
+    @Override
     public T removeFirst() {
         return remove(0);
     }
@@ -60,10 +64,12 @@ public class MyArrayList<T> {
         internalArray = tmp;
     }
 
+    @Override
     public T get() {
         return get(lastElementPosition);
     }
 
+    @Override
     public T get(int position) {
         if (position < 0 || position > lastElementPosition) {
             throw new NoElementAtPositionException(position, lastElementPosition);
@@ -71,6 +77,7 @@ public class MyArrayList<T> {
         return (T) internalArray[position];
     }
 
+    @Override
     public T getFirst() {
         return get(0);
     }
@@ -90,6 +97,7 @@ public class MyArrayList<T> {
         return elem;
     }
 
+    @Override
     public T remove(int position) {
         if (position < 0 || position > lastElementPosition) {
             throw new NoElementAtPositionException(position, lastElementPosition);
