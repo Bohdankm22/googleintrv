@@ -4,7 +4,8 @@ import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TestMyArrayList {
 
@@ -42,30 +43,6 @@ public class TestMyArrayList {
     }
 
     @Test
-    public void testElementsPositionsOnTheList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int[] elements = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int addedElem = 6;
-        for (int i : elements) {
-            if (i != addedElem) {
-                test.add(i);
-            }
-        }
-
-        for (int i = 0; i < 6; i++) {
-            int actValue = test.get(i);
-            assertEquals("Element is not in place!", elements[i], actValue);
-        }
-
-        for (int i = 7; i < elements.length; i++) {
-            int actValue = test.get(i - 1);
-            assertEquals("Element is not in place!", elements[i], actValue);
-        }
-
-        test.remove();
-    }
-
-    @Test
     public void testCapacity() {
         MyArrayList<Integer> test = new MyArrayList<>();
         int capacity = 16;
@@ -86,41 +63,6 @@ public class TestMyArrayList {
             test.remove();
         }
         assertEquals("Element is not in place!", capacity / 4, test.capacity());
-    }
-
-    @Test
-    public void testIsEmpty() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        assertEquals("Element is not in place!", true, test.isEmpty());
-        for (int i = 0; i < 5; i++) {
-            test.add(0);
-            assertEquals("Element is not in place!", false, test.isEmpty());
-            test.remove();
-            assertEquals("Element is not in place!", true, test.isEmpty());
-        }
-    }
-
-    @Test(expected = NotAccessiblePositionException.class)
-    public void testAddItemToWrongPosition() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        assertEquals("Should be not able to add elem to this position.", true, test.add(1, testArg));
-    }
-
-    @Test(expected = NotAccessiblePositionException.class)
-    public void testAddItemToNegativePosition() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        assertEquals("Should be not able to add elem to this position.", true, test.add(-1, testArg));
-    }
-
-    @Test
-    public void testAddItemWithPositioning() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            assertEquals("Size of the list is not right.", i, test.size());
-            test.add(0, i);
-        }
     }
 
     @Test

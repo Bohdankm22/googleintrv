@@ -1,9 +1,10 @@
 package datastructure.list;
 
+import datastructure.Queue.MyQueue;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
-public class MyLinkedList<T> implements MyList<T> {
+public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     private Node first;
     private Node last;
@@ -64,6 +65,16 @@ public class MyLinkedList<T> implements MyList<T> {
         node.setNext(node.getNext().getNext());
         size--;
         return result;
+    }
+
+    @Override
+    public boolean enqueue(T item) {
+        return add(item);
+    }
+
+    @Override
+    public T dequeue() {
+        return removeFirst();
     }
 
     @Override

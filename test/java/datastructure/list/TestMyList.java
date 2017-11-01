@@ -1,6 +1,7 @@
 package datastructure.list;
 
 import datastructure.exceptions.NoElementAtPositionException;
+import datastructure.exceptions.NotAccessiblePositionException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,6 @@ import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
 
 @RunWith(value = Parameterized.class)
 public class TestMyList {
@@ -50,7 +50,7 @@ public class TestMyList {
 
     @Test(expected = NoElementAtPositionException.class)
     public void testGetFromEmptyList() {
-        assertNull("Getting element from isEmpty list should return exception!", list.get());
+        list.get();
     }
 
     @Test
@@ -119,6 +119,60 @@ public class TestMyList {
             int removedItem = list.remove(0);
             int actualValue = list.get(0);
             assertNotEquals("Removed element should not be in the list!", removedItem, actualValue);
+        }
+    }
+
+    @Test
+    public void testElementsPositionsOnTheList() {
+        int[] elements = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int addedElem = 6;
+        for (int i : elements) {
+            if (i != addedElem) {
+                list.add(i);
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            int actValue = list.get(i);
+            assertEquals("Element is not in place!", elements[i], actValue);
+        }
+
+        for (int i = 7; i < elements.length; i++) {
+            int actValue = list.get(i - 1);
+            assertEquals("Element is not in place!", elements[i], actValue);
+        }
+
+        list.remove();
+    }
+
+    @Test
+    public void testIsEmpty() {
+        assertEquals("Element is not in place!", true, list.isEmpty());
+        for (int i = 0; i < 5; i++) {
+            list.add(0);
+            assertEquals("Element is not in place!", false, list.isEmpty());
+            list.remove();
+            assertEquals("Element is not in place!", true, list.isEmpty());
+        }
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddItemToWrongPosition() {
+        int testArg = Integer.MAX_VALUE;
+        list.add(1, testArg);
+    }
+
+    @Test(expected = NotAccessiblePositionException.class)
+    public void testAddItemToNegativePosition() {
+        int testArg = Integer.MAX_VALUE;
+        list.add(-1, testArg);
+    }
+
+    @Test
+    public void testAddItemWithPositioning() {
+        for (int i = 0; i < 20; i++) {
+            assertEquals("Size of the list is not right.", i, list.size());
+            list.add(0, i);
         }
     }
 }

@@ -7,4 +7,8 @@ public interface MyQueue<T> {
     T dequeue();
 
     boolean isEmpty();
+
+    boolean removeAll();
+
+    int size();
 }
