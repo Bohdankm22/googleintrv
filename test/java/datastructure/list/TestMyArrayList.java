@@ -32,16 +32,6 @@ public class TestMyArrayList {
         assertEquals("Could not get element that was added.", testArg, test.get(position));
     }
 
-    @Test
-    public void testGetByPositionIntegerInput() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        int position = 0;
-        assertEquals("Could not add element.", true, test.add(testArg));
-        int result = test.get(position);
-        assertEquals("Could not get element that was added.", testArg, result);
-    }
-
     @Test(expected = NoElementAtPositionException.class)
     public void testGetByPositionFromEmptyList() {
         MyArrayList<Integer> test = new MyArrayList<>();

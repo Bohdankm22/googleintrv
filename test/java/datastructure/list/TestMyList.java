@@ -45,4 +45,13 @@ public class TestMyList {
     public void testGetFromEmptyList() {
         assertNull("Getting element from isEmpty list should return exception!", list.get());
     }
+
+    @Test
+    public void testGetByPositionIntegerInput() {
+        int testArg = Integer.MAX_VALUE;
+        int position = 0;
+        assertEquals("Could not add element.", true, list.add(testArg));
+        int result = list.get(position);
+        assertEquals("Could not get element that was added.", testArg, result);
+    }
 }
