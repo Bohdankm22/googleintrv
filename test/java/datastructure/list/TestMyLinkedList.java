@@ -80,7 +80,6 @@ public class TestMyLinkedList {
     @Test
     public void testGetFirst() {
         MyLinkedList<Integer> test = new MyLinkedList<>();
-        assertNull(test.getFirst());
         for (int i = 0; i < 100; i++) {
             test.add(i);
         }
@@ -91,7 +90,6 @@ public class TestMyLinkedList {
     @Test
     public void testGetLast() {
         MyLinkedList<Integer> test = new MyLinkedList<>();
-        assertNull(test.getFirst());
         for (int i = 0; i < 100; i++) {
             test.add(i);
         }

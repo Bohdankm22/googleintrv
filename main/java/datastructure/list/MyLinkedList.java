@@ -62,6 +62,14 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     @Override
+    public boolean removeAll() {
+        size = 0;
+        first = null;
+        last = null;
+        return true;
+    }
+
+    @Override
     public boolean add(T item) {
         Node addedNode = new Node(item);
         if (size() == 0) {
@@ -136,7 +144,10 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     public T getFirst() {
-        return size() != 0 ? first.getElem() : null;
+        if (size() == 0) {
+            throw new NoElementAtPositionException();
+        }
+        return first.getElem();
     }
 
     public T getLast() {

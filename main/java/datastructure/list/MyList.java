@@ -23,4 +23,6 @@ public interface MyList<T> {
     T remove(int position);
 
     boolean isEmpty();
+
+    boolean removeAll();
 }

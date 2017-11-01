@@ -33,41 +33,12 @@ public class TestMyArrayList {
     }
 
     @Test(expected = NoElementAtPositionException.class)
-    public void testGetByPositionFromEmptyList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int position = 0;
-        assertNull("Getting element from isEmpty list should return exception!", test.get(position));
-    }
-
-    @Test(expected = NoElementAtPositionException.class)
-    public void testGetByNegativePositionFromEmptyList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int position = -1;
-        assertNull("Getting element from isEmpty list should return exception!", test.get(position));
-    }
-
-    @Test(expected = NoElementAtPositionException.class)
     public void testGetByWrongPositionFromEmptyList() {
         MyArrayList<Integer> test = new MyArrayList<>();
         int testArg = Integer.MAX_VALUE;
         int position = 1;
         assertEquals("Could not add element.", true, test.add(testArg));
         assertNull("Getting element from isEmpty list should return exception!", test.get(position));
-    }
-
-    @Test
-    public void checkArraySize() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int initialSize = 0;
-        assertEquals("Size of isEmpty list is not right!", initialSize, test.size());
-        for (int i = 0; i < 100; i++) {
-            test.add(1);
-            assertEquals("Size after adding is not right!", i + 1, test.size());
-        }
-        for (int i = 99; i >= 0; i--) {
-            test.remove();
-            assertEquals("Size after removing is not right!", i, test.size());
-        }
     }
 
     @Test

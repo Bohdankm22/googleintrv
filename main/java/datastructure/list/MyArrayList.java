@@ -123,6 +123,14 @@ public class MyArrayList<T> implements MyList<T> {
         return lastElementPosition == -1;
     }
 
+    @Override
+    public boolean removeAll() {
+        internalArray = new Object[DEFAULT_ARRAY_INIT_SIZE];
+        lastElementPosition = -1;
+        arraySize = DEFAULT_ARRAY_INIT_SIZE;
+        return true;
+    }
+
     public T pop() {
         return remove();
     }
