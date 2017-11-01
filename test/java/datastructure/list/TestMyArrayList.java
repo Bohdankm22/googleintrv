@@ -16,33 +16,11 @@ public class TestMyArrayList {
     }
 
     @Test
-    public void testAddIntegerInput() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        assertEquals("Could not add element.", true, test.add(testArg));
-    }
-
-    @Test
     public void testGetStringInput() {
         MyArrayList<String> test = new MyArrayList<>();
         String testArg = "test";
         assertEquals("Could not add element.", true, test.add(testArg));
         assertEquals("Could not get element that was added.", testArg, test.get());
-    }
-
-    @Test
-    public void testGetIntegerInput() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        int testArg = Integer.MAX_VALUE;
-        assertEquals("Could not add element.", true, test.add(testArg));
-        int result = test.get();
-        assertEquals("Could not get element that was added.", testArg, result);
-    }
-
-    @Test(expected = NoElementAtPositionException.class)
-    public void testGetFromEmptyList() {
-        MyArrayList<Integer> test = new MyArrayList<>();
-        assertNull("Getting element from isEmpty list should return exception!", test.get());
     }
 
     @Test

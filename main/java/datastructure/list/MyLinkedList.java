@@ -140,7 +140,10 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     public T getLast() {
-        return size() != 0 ? last.getElem() : null;
+        if (size() == 0) {
+            throw new NoElementAtPositionException();
+        }
+        return last.getElem();
     }
 
     @Override
