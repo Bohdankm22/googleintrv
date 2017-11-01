@@ -118,6 +118,7 @@ public class MyArrayList<T> implements MyList<T> {
         return removed;
     }
 
+    @Override
     public boolean isEmpty() {
         return lastElementPosition == -1;
     }

@@ -21,4 +21,6 @@ public interface MyList<T> {
     T remove();
 
     T remove(int position);
+
+    boolean isEmpty();
 }
