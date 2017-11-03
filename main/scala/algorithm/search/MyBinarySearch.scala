@@ -3,7 +3,7 @@ package algorithm.search
 object MyBinarySearch {
 
   def search(arr: Array[Int], i: Int): Boolean = {
-    if (arr.length == 0) false
+    if (arr.length == 0 || (arr.length == 1 && arr(0) != i)) false
     else if(arr(arr.length / 2) == i) true
     else if(arr(arr.length / 2) > i) search(arr.slice(0, arr.length / 2), i)
     else search(arr.slice(arr.length / 2, arr.length), i)
