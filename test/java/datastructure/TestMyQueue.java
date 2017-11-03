@@ -1,6 +1,6 @@
 package datastructure;
 
-import datastructure.Queue.MyQueue;
+import datastructure.queue.MyQueue;
 import datastructure.list.MyLinkedList;
 import org.junit.Assert;
 import org.junit.Before;

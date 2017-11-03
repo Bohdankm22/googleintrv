@@ -1,6 +1,6 @@
 package datastructure.list;
 
-import datastructure.Queue.MyQueue;
+import datastructure.queue.MyQueue;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
