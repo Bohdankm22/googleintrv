@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.queue;
 
 import datastructure.queue.MyQueue;
 import datastructure.list.MyLinkedList;
