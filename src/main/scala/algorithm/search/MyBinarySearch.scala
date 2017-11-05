@@ -1,5 +1,7 @@
 package algorithm.search
 
+import scala.annotation.tailrec
+
 object MyBinarySearch {
 
   /**
@@ -8,6 +10,7 @@ object MyBinarySearch {
     * @param i
     * @return
     */
+  @tailrec
   def searchRecursively(arr: Array[Int], i: Int): Boolean = {
     if (arr.length == 0 || (arr.length == 1 && arr(0) != i)) false
     else if(arr(arr.length / 2) == i) true
