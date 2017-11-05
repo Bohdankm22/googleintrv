@@ -17,21 +17,24 @@ object MyBinarySearch {
   @tailrec
   def searchRecursively(arr: Array[Int], i: Int, min: Int, max: Int): Boolean = {
     if (arr.length == 0 || (min == max && arr(min) != i)) false
-    else if(arr(min + (max - min) / 2) == i) true
-    else if(arr(min + (max - min) / 2) > i) searchRecursively(arr, i, min, min + (max - min) / 2)
+    else if (arr(min + (max - min) / 2) == i) true
+    else if (arr(min + (max - min) / 2) > i) searchRecursively(arr, i, min, min + (max - min) / 2)
     else searchRecursively(arr, i, min + (max - min) / 2 + 1, max)
   }
 
   /**
-    * Binary search with 2 pointers.
+    * Binary search with 2 pointers and while loop.
     */
   def search(arr: Array[Int], i: Int, min: Int, max: Int): Boolean = {
-    while (min < max) {
-      if (arr(min + (min + max) / 2) >= i) {
-
-      }
+    if (arr.length == 0) return false
+    var minPointer = min
+    var maxPointer = max
+    while (minPointer < maxPointer) {
+      if (arr(minPointer + (maxPointer - minPointer) / 2) == i) return true
+      else if (arr(minPointer + (maxPointer - minPointer) / 2) > i) maxPointer = minPointer + (maxPointer - minPointer) / 2
+      else minPointer += (maxPointer - minPointer) / 2 + 1
     }
-    arr(min) == i
+    arr(minPointer) == i
   }
 
   /**
@@ -42,9 +45,9 @@ object MyBinarySearch {
   }
 
   def main(args: Array[String]): Unit = {
-    val arr = Array(1, 5 , 7, 9, 25, 26, 30, 42, 96)
-    for (br <- arr) println("Returned search value : " + searchRecursively(arr, br))
-    println("Returned search value : " + searchRecursively(arr, 8))
+    val arr = Array(1, 5, 7, 9, 25, 26, 30, 42, 96)
+    for (br <- arr) println("Returned search value : " + search(arr, br))
+    println("Returned search value : " + search(arr, 8))
   }
 
 }
