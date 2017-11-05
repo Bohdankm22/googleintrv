@@ -5,17 +5,21 @@ import scala.annotation.tailrec
 object MyBinarySearch {
 
   /**
-    * Binary search with recursion and passing part of the array.
-    * @param arr
-    * @param i
-    * @return
+    * Binary search overloaded method to simplify arguments.
+    */
+  def searchRecursively(arr: Array[Int], i: Int): Boolean = {
+    searchRecursively(arr, i, 0, arr.length)
+  }
+
+  /**
+    * Binary search with pointers to min and max values at the array.
     */
   @tailrec
-  def searchRecursively(arr: Array[Int], i: Int): Boolean = {
-    if (arr.length == 0 || (arr.length == 1 && arr(0) != i)) false
-    else if(arr(arr.length / 2) == i) true
-    else if(arr(arr.length / 2) > i) searchRecursively(arr.slice(0, arr.length / 2), i)
-    else searchRecursively(arr.slice(arr.length / 2, arr.length), i)
+  def searchRecursively(arr: Array[Int], i: Int, min: Int, max: Int): Boolean = {
+    if (arr.length == 0 || (min == max && arr(min) != i)) false
+    else if(arr(min + (max - min) / 2) == i) true
+    else if(arr(min + (max - min) / 2) > i) searchRecursively(arr, i, min, min + (max - min) / 2)
+    else searchRecursively(arr, i, min + (max - min) / 2 + 1, max)
   }
 
   /**
