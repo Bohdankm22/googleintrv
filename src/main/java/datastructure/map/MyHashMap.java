@@ -1,6 +1,15 @@
 package datastructure.map;
 
+import datastructure.list.MyLinkedList;
+
 public class MyHashMap<K, V> implements MyMap<K, V> {
+
+    private MyLinkedList<V>[] array;
+    private static final int INITIAL_SIZE = 16;
+
+    public MyHashMap() {
+
+    }
 
     @Override
     public MyMap put(K key, V value) {
@@ -22,7 +31,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         return null;
     }
 
-    private boolean hash(int k, int m) {
-        return false;
+    private int hash(int k, int m) {
+        return k % m;
     }
 }
