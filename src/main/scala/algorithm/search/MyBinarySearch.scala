@@ -43,11 +43,4 @@ object MyBinarySearch {
   def search(arr: Array[Int], i: Int): Boolean = {
     search(arr, i, 0, arr.length)
   }
-
-  def main(args: Array[String]): Unit = {
-    val arr = Array(1, 5, 7, 9, 25, 26, 30, 42, 96)
-    for (br <- arr) println("Returned search value : " + search(arr, br))
-    println("Returned search value : " + search(arr, 8))
-  }
-
 }
