@@ -24,7 +24,7 @@ public class TestMyInsertionSort {
         this.list = list;
     }
 
-    @Parameterized.Parameters(name = "{index}: test sorting {0}")
+    @Parameterized.Parameters(name = "{index}: test sorting {0} and list implementation {1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {new MyInsertionSort<Integer>(), new MyArrayList<Integer>()},

@@ -197,4 +197,11 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         size++;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "MyLinkedList{" +
+                "size=" + size +
+                '}';
+    }
 }

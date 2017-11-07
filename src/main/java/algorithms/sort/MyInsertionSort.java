@@ -27,4 +27,9 @@ public class MyInsertionSort<T extends Comparable<T>> implements Sortable<T> {
         }
         return list.add(toPosition, list.remove(fromPosition));
     }
+
+    @Override
+    public String toString() {
+        return "MyInsertionSort";
+    }
 }
