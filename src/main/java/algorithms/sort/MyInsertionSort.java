@@ -8,12 +8,12 @@ public class MyInsertionSort<T extends Comparable<T>> implements Sortable<T> {
     public MyList<T> sort(MyList<T> list) {
         for (int i = 1; i < list.size(); i++) {
             for (int j = i - 1; j >= 0; j--) {
-                if (j == 0) {
-                    insert(list, i, j);
-                    break;
-                }
                 if (list.get(i).compareTo(list.get(j)) >= 0) {
                     insert(list, i, j + 1);
+                    break;
+                }
+                if (j == 0) {
+                    insert(list, i, j);
                     break;
                 }
             }

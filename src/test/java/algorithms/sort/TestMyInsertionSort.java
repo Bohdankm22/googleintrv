@@ -10,6 +10,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,17 +19,21 @@ public class TestMyInsertionSort {
 
     private MyList<Integer> list;
     private Sortable<Integer> sort;
+    private int size;
 
-    public TestMyInsertionSort(Sortable<Integer> sort, MyList<Integer> list) {
+    public TestMyInsertionSort(Sortable<Integer> sort, MyList<Integer> list, int size) {
         this.sort = sort;
         this.list = list;
+        this.size = size;
     }
 
-    @Parameterized.Parameters(name = "{index}: test sorting {0} and list implementation {1}")
+    @Parameterized.Parameters(name = "{index}: test sorting {0} and list implementation {1} with size {2}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {new MyInsertionSort<Integer>(), new MyArrayList<Integer>()},
-                {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>()}
+                {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 100},
+                {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 10000},
+                {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>(), 100},
+                {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>(), 1000}
         });
     }
 
@@ -39,13 +44,42 @@ public class TestMyInsertionSort {
 
     @Test
     public void testReorderBackOrder() {
-        for (int i = 100; i >= 0; i--) {
+        for (int i = size; i >= 0; i--) {
             list.add(i);
         }
+        long startTime = System.nanoTime();
         sort.sort(list);
-        for (int i = 0; i <= 100; i++) {
+        System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
+        for (int i = 0; i <= size; i++) {
             int result = list.get(i);
             assertEquals(result, i);
         }
+    }
+
+    @Test
+    public void testSortOrdered() {
+        for (int i = 0; i < size; i++) {
+            list.add(i);
+        }
+        long startTime = System.nanoTime();
+        sort.sort(list);
+        System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
+        for (int i = 0; i < size; i++) {
+            int result = list.get(i);
+            assertEquals(result, i);
+        }
+    }
+
+    @Test
+    public void checkSizeAfterSort() {
+        Random random = new Random();
+        for (int i = 0; i < size; i++) {
+            list.add(random.nextInt(size));
+        }
+        assertEquals(list.size(), size);
+        long startTime = System.nanoTime();
+        sort.sort(list);
+        System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
+        assertEquals(list.size(), size);
     }
 }
