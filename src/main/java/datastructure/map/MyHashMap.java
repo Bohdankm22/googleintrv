@@ -2,13 +2,17 @@ package datastructure.map;
 
 import datastructure.list.MyLinkedList;
 
+import java.util.LinkedList;
+
 public class MyHashMap<K, V> implements MyMap<K, V> {
 
-    private MyLinkedList<V>[] array;
+    private LinkedList<V>[] array;
     private static final int INITIAL_SIZE = 16;
+    private static int size;
 
     public MyHashMap() {
-
+        size = INITIAL_SIZE;
+        array = (LinkedList<V>[]) new LinkedList[size];
     }
 
     @Override
@@ -18,7 +22,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
 
     @Override
     public boolean exists(K key) {
-        return false;
+        return array[hash(key, size)] != null && array[hash(key, size)].contains(key);
     }
 
     @Override
@@ -31,7 +35,11 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         return null;
     }
 
-    private int hash(int k, int m) {
-        return k % m;
+    private int hash(K key, int m) {
+        return prehash(key) % m;
+    }
+
+    private int prehash(K key) {
+        return (Integer) key;
     }
 }
