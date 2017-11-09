@@ -57,6 +57,20 @@ public class TestMyInsertionSort {
     }
 
     @Test
+    public void testSameValues() {
+        for (int i = size; i >= 0; i--) {
+            list.add(1);
+        }
+        long startTime = System.nanoTime();
+        sort.sort(list);
+        System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
+        for (int i = 0; i <= size; i++) {
+            int result = list.get(i);
+            assertEquals(result, 1);
+        }
+    }
+
+    @Test
     public void testSortOrdered() {
         for (int i = 0; i < size; i++) {
             list.add(i);
