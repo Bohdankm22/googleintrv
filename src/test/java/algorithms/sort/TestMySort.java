@@ -15,13 +15,13 @@ import java.util.Random;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
-public class TestMyInsertionSort {
+public class TestMySort {
 
     private MyList<Integer> list;
     private Sortable<Integer> sort;
     private int size;
 
-    public TestMyInsertionSort(Sortable<Integer> sort, MyList<Integer> list, int size) {
+    public TestMySort(Sortable<Integer> sort, MyList<Integer> list, int size) {
         this.sort = sort;
         this.list = list;
         this.size = size;
