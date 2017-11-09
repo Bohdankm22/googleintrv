@@ -57,7 +57,7 @@ public class TestMyInsertionSort {
     }
 
     @Test
-    public void testSameValues() {
+    public void testSortListWithSameValues() {
         for (int i = size; i >= 0; i--) {
             list.add(1);
         }
