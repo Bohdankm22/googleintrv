@@ -33,15 +33,12 @@ public class TestMySort {
                 {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 100},
                 {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 10000},
                 {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>(), 100},
-                {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>(), 1000},
                 {new MySelectionSort<Integer>(), new MyArrayList<Integer>(), 100},
                 {new MySelectionSort<Integer>(), new MyArrayList<Integer>(), 10000},
                 {new MySelectionSort<Integer>(), new MyLinkedList<Integer>(), 100},
-                {new MySelectionSort<Integer>(), new MyLinkedList<Integer>(), 1000},
-                {new MyHeapSort<>(), new MyArrayList<Integer>(), 100},
+                {new MyHeapSort<Integer>(), new MyArrayList<Integer>(), 100},
                 {new MyHeapSort<Integer>(), new MyArrayList<Integer>(), 10000},
-                {new MyHeapSort<Integer>(), new MyLinkedList<Integer>(), 100},
-                {new MyHeapSort<Integer>(), new MyLinkedList<Integer>(), 1000},
+                {new MyHeapSort<Integer>(), new MyLinkedList<Integer>(), 100}
         });
     }
 
