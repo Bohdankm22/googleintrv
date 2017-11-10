@@ -7,4 +7,8 @@ public class MyBitManipulation {
         return x | mask;
     }
 
+    public static int clearBit(int x, int position) {
+        int mask = 1 << position;
+        return x ^ mask;
+    }
 }
