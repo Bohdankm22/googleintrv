@@ -24,6 +24,11 @@ public class MySelectionSort<T extends Comparable<T>> implements Sortable<T> {
         return list;
     }
 
+    /**
+     * Swap elements at provided positions.
+     * @param list for swapping.
+     * @return true if elements were swapped.
+     */
     private boolean swap(MyList<T> list, int position1, int position2) {
         if (position1 == position2) {
             return false;
