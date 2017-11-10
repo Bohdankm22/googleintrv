@@ -11,4 +11,10 @@ public class MyBitManipulation {
         int mask = 1 << position;
         return x & ~mask;
     }
+
+    public static int flipBit(int x, int position) {
+        int mask = 1 << position;
+        return x ^ mask;
+    }
+
 }
