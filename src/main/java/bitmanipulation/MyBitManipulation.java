@@ -9,6 +9,6 @@ public class MyBitManipulation {
 
     public static int clearBit(int x, int position) {
         int mask = 1 << position;
-        return x ^ mask;
+        return x & ~mask;
     }
 }
