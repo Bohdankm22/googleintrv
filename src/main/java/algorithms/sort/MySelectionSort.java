@@ -2,6 +2,12 @@ package algorithms.sort;
 
 import datastructure.list.MyList;
 
+/**
+ * Sorting algorithm that iterates through the list looking for the smallest element and bringing it to the beginning.
+ * Best case scenario O(n^2).
+ * Worst case scenario O(n^2).
+ * Average case scenario O(n^2).
+ */
 public class MySelectionSort<T extends Comparable<T>> implements Sortable<T> {
 
     @Override
