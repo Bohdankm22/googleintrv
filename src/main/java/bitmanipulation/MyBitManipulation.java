@@ -17,4 +17,8 @@ public class MyBitManipulation {
         return x ^ mask;
     }
 
+    public static boolean isBitSet(int x, int position) {
+        int mask = 1 << position;
+        return (x & mask) == mask;
+    }
 }
