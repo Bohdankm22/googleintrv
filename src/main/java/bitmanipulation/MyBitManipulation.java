@@ -21,4 +21,8 @@ public class MyBitManipulation {
         int mask = 1 << position;
         return (x & mask) == mask;
     }
+
+    public static boolean isNumberEven(int x) {
+        return (x & 1) != 1;
+    }
 }
