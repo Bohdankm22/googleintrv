@@ -8,4 +8,9 @@ public class MyMergeSort<T extends Comparable<T>> implements Sortable<T> {
     public MyList<T> sort(MyList<T> list) {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "MyMergeSort";
+    }
 }

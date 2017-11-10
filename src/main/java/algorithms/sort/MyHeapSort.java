@@ -9,4 +9,8 @@ public class MyHeapSort<T extends Comparable<T>> implements Sortable<T> {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "MyHeapSort";
+    }
 }
