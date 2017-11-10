@@ -25,4 +25,8 @@ public class MyBitManipulation {
     public static boolean isNumberEven(int x) {
         return (x & 1) != 1;
     }
+
+    public static boolean isPowerOfTwo(int x) {
+        return (x & x-1) == 0;
+    }
 }
