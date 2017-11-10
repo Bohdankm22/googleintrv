@@ -57,6 +57,9 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         if (position > size() - 1) {
             throw new NoElementAtPositionException(position, size() - 1);
         }
+        if (position == size() - 1) {
+            return removeLast();
+        }
         Node node = first;
         for (int i = 0; i < position - 1; i++) {
             node = node.getNext();
@@ -65,6 +68,10 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         node.setNext(node.getNext().getNext());
         size--;
         return result;
+    }
+
+    private T removeLast() {
+        return pop();
     }
 
     @Override
@@ -106,6 +113,12 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
     public T get(int position) {
         if (position < 0 || position >= size()) {
             throw new NoElementAtPositionException(position, size() - 1);
+        }
+        if (position == 0) {
+            return getFirst();
+        }
+        if (position == size() - 1) {
+            return getLast();
         }
         Node node = first;
         for (int i = 0; i < position; i++) {
