@@ -29,4 +29,16 @@ public class MyBitManipulation {
     public static boolean isPowerOfTwo(int x) {
         return (x & x-1) == 0;
     }
+
+    public static int countDiffBits(int x, int y) {
+        int tmpNumb = x ^ y;
+        int count = 0;
+        while (tmpNumb > 0) {
+            if ((tmpNumb & 1) == 1) {
+                count++;
+            }
+            tmpNumb = tmpNumb >> 1;
+        }
+        return count;
+    }
 }
