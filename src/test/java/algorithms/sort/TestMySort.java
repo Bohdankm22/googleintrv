@@ -31,12 +31,15 @@ public class TestMySort {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 100},
+                {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 101},
                 {new MyInsertionSort<Integer>(), new MyArrayList<Integer>(), 10000},
                 {new MyInsertionSort<Integer>(), new MyLinkedList<Integer>(), 100},
                 {new MySelectionSort<Integer>(), new MyArrayList<Integer>(), 100},
+                {new MySelectionSort<Integer>(), new MyArrayList<Integer>(), 101},
                 {new MySelectionSort<Integer>(), new MyArrayList<Integer>(), 10000},
                 {new MySelectionSort<Integer>(), new MyLinkedList<Integer>(), 100},
                 {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 100},
+                {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 101},
                 {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 10000},
                 {new MyMergeSort<Integer>(), new MyLinkedList<Integer>(), 100}
 //                {new MyHeapSort<Integer>(), new MyArrayList<Integer>(), 100},
