@@ -189,4 +189,49 @@ public class TestMyList {
             assertEquals(i, result);
         }
     }
+
+    @Test(expected = NoElementAtPositionException.class)
+    public void testSublistWrongParameter() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.sublist(-1, 1);
+    }
+
+    @Test(expected = NoElementAtPositionException.class)
+    public void testSublistWrongParameter1() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.sublist(11);
+    }
+
+    @Test(expected = NoElementAtPositionException.class)
+    public void testSublistWrongParameter2() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.sublist(9, 2);
+    }
+
+    @Test(expected = NoElementAtPositionException.class)
+    public void testSublistWrongParameter3() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        list.sublist(5, 6);
+    }
+
+    @Test
+    public void testSublistFull() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        MyList<Integer> result = list.sublist(10);
+        assertEquals(10, result.size());
+        for (int i = 0; i < 10; i++) {
+            int res = result.get(i);
+            assertEquals(i, res);
+        }
+    }
 }
