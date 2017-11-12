@@ -175,4 +175,17 @@ public class TestMyList {
             list.add(0, i);
         }
     }
+
+    @Test
+    public void testGettingSublist() {
+        for (int i = 0; i < 20; i++) {
+            list.add(0, i);
+        }
+        assertEquals(20, list.size());
+        MyList<Integer> sublist = list.sublist(10);
+        assertEquals(10, list.size());
+        for (int i = 0; i < 10; i++) {
+            assertEquals(i, list.size());
+        }
+    }
 }
