@@ -212,6 +212,16 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
     }
 
     @Override
+    public MyList<T> sublist(int numbOfElem) {
+        return null;
+    }
+
+    @Override
+    public MyList<T> sublist(int startPosition, int numbOfElem) {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "MyLinkedList{" +
                 "size=" + size +

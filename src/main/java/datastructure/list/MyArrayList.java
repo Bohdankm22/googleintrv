@@ -149,6 +149,17 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     @Override
+    public MyList<T> sublist(int numbOfElem) {
+        return null;
+    }
+
+    @Override
+    public MyList<T> sublist(int startPosition, int numbOfElem) {
+        return null;
+    }
+
+
+    @Override
     public String toString() {
         return "MyArrayList{" +
                 "size=" + size() +

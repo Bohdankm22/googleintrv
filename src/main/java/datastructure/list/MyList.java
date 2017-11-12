@@ -25,4 +25,8 @@ public interface MyList<T> {
     boolean isEmpty();
 
     boolean removeAll();
+
+    MyList<T> sublist(int numbOfElem);
+
+    MyList<T> sublist(int startPosition, int numbOfElem);
 }
