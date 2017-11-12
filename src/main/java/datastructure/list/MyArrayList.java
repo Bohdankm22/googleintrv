@@ -150,12 +150,19 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public MyList<T> sublist(int numbOfElem) {
-        return null;
+        return sublist(0, numbOfElem);
     }
 
     @Override
     public MyList<T> sublist(int startPosition, int numbOfElem) {
-        return null;
+        if (startPosition < 0 || startPosition + numbOfElem > size()) {
+            throw new NoElementAtPositionException();
+        }
+        MyList<T> result = new MyArrayList<>();
+        for (int i = 0; i < numbOfElem; i++) {
+            result.add(get(startPosition + i));
+        }
+        return result;
     }
 
 
