@@ -17,11 +17,15 @@ public class MyMergeSort<T extends Comparable<T>> implements Sortable<T> {
         if (list.size() <= 1) {
             return list;
         }
-        return sort(list, list);
+        return sort(list.sublist(list.size() / 2), list.sublist(list.size() / 2, list.size() - list.size() / 2));
     }
 
     private MyList<T> sort(MyList<T> listLeft, MyList<T> listRight) {
-        return null;
+        MyList<T> left = listLeft.size() <= 1 ? listLeft : sort(listLeft.sublist(listLeft.size() / 2),
+                listLeft.sublist(listLeft.size() / 2, listLeft.size() - listLeft.size() / 2));
+        MyList<T> right = listRight.size() <= 1 ? listRight : sort(listRight.sublist(listRight.size() / 2),
+                listRight.sublist(listRight.size() / 2, listRight.size() - listRight.size() / 2));
+        return merge(left, right);
     }
 
     private MyList<T> merge(MyList<T> list1, MyList<T> list2) {
