@@ -1,39 +1,14 @@
 package datastructure.list;
 
-import datastructure.queue.MyQueue;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
+import datastructure.queue.MyQueue;
 
 public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     private Node first;
     private Node last;
     private int size;
-
-    private class Node {
-        T elem;
-        Node next;
-
-        public Node(T elem) {
-            this.elem = elem;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
-        public T getElem() {
-            return elem;
-        }
-
-        public void setElem(T elem) {
-            this.elem = elem;
-        }
-    }
 
     public MyLinkedList() {
         size = 0;
@@ -233,5 +208,30 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         return "MyLinkedList{" +
                 "size=" + size +
                 '}';
+    }
+
+    private class Node {
+        T elem;
+        Node next;
+
+        public Node(T elem) {
+            this.elem = elem;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
+        public T getElem() {
+            return elem;
+        }
+
+        public void setElem(T elem) {
+            this.elem = elem;
+        }
     }
 }

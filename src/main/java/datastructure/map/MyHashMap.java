@@ -1,14 +1,12 @@
 package datastructure.map;
 
-import datastructure.list.MyLinkedList;
-
 import java.util.LinkedList;
 
 public class MyHashMap<K, V> implements MyMap<K, V> {
 
-    private LinkedList<V>[] array;
     private static final int INITIAL_SIZE = 16;
     private static int size;
+    private LinkedList<V>[] array;
 
     public MyHashMap() {
         size = INITIAL_SIZE;

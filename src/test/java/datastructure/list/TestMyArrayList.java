@@ -1,7 +1,6 @@
 package datastructure.list;
 
 import datastructure.exceptions.NoElementAtPositionException;
-import datastructure.exceptions.NotAccessiblePositionException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

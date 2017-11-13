@@ -23,6 +23,13 @@ object MyBinarySearch {
   }
 
   /**
+    * Overloaded search method
+    */
+  def search(arr: Array[Int], i: Int): Boolean = {
+    search(arr, i, 0, arr.length)
+  }
+
+  /**
     * Binary search with 2 pointers and while loop.
     */
   def search(arr: Array[Int], i: Int, min: Int, max: Int): Boolean = {
@@ -35,12 +42,5 @@ object MyBinarySearch {
       else minPointer += (maxPointer - minPointer) / 2 + 1
     }
     arr(minPointer) == i
-  }
-
-  /**
-    * Overloaded search method
-    */
-  def search(arr: Array[Int], i: Int): Boolean = {
-    search(arr, i, 0, arr.length)
   }
 }

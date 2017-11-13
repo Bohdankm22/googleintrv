@@ -15,7 +15,7 @@ public class MySelectionSort<T extends Comparable<T>> implements Sortable<T> {
         for (int i = 0; i < list.size() - 1; i++) {
             int min = i;
             for (int j = i + 1; j < list.size(); j++) {
-                if(list.get(j).compareTo(list.get(min)) < 0) {
+                if (list.get(j).compareTo(list.get(min)) < 0) {
                     min = j;
                 }
             }
@@ -26,6 +26,7 @@ public class MySelectionSort<T extends Comparable<T>> implements Sortable<T> {
 
     /**
      * Swap elements at provided positions.
+     *
      * @param list for swapping.
      * @return true if elements were swapped.
      */

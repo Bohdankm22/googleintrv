@@ -4,7 +4,8 @@ public class MyBitManipulation {
 
     /**
      * Sets bit into binary number at the particular position.
-     * @param x binary number to change.
+     *
+     * @param x        binary number to change.
      * @param position to set a bit.
      * @return binary number with bit set.
      */
@@ -15,7 +16,8 @@ public class MyBitManipulation {
 
     /**
      * Clears bit in binary number at the particular position.
-     * @param x binary number to change.
+     *
+     * @param x        binary number to change.
      * @param position to clear a bit.
      * @return binary number with bit cleared.
      */
@@ -39,7 +41,7 @@ public class MyBitManipulation {
     }
 
     public static boolean isPowerOfTwo(int x) {
-        return (x & x-1) == 0;
+        return (x & x - 1) == 0;
     }
 
     public static int countDiffBits(int x, int y) {
