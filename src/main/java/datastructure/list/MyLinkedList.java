@@ -3,8 +3,9 @@ package datastructure.list;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 import datastructure.queue.MyQueue;
+import datastructure.stack.MyStack;
 
-public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
+public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T> {
 
     private Node first;
     private Node last;
@@ -135,6 +136,11 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
             size--;
         }
         return result;
+    }
+
+    @Override
+    public boolean push(T item) {
+        return add(item);
     }
 
     public T pop() {
