@@ -35,15 +35,15 @@ public class TestMyQueue {
 
     @Test
     public void testEmpty() {
-        assertEquals("Could not add element.", true, queue.isEmpty());
+        assertEquals(true, queue.isEmpty());
         queue.enqueue(Integer.MAX_VALUE);
-        assertEquals("Could not add element.", false, queue.isEmpty());
+        assertEquals(false, queue.isEmpty());
     }
 
     @Test
     public void testEnqueueIntegerInput() {
         int testArg = Integer.MAX_VALUE;
-        assertEquals("Could not add element.", true, queue.enqueue(testArg));
+        assertEquals(true, queue.enqueue(testArg));
     }
 
     @Test
@@ -51,23 +51,23 @@ public class TestMyQueue {
         int testArg = Integer.MAX_VALUE;
         queue.enqueue(testArg);
         int result = queue.dequeue();
-        assertEquals("Could not add element.", testArg, result);
+        assertEquals(testArg, result);
         for (int i = 0; i < 100; i++) {
             queue.enqueue(i);
         }
         for (int i = 0; i < 100; i++) {
             result = queue.dequeue();
-            assertEquals("Could not add element.", i, result);
+            assertEquals(i, result);
         }
     }
 
     @Test
     public void testSize() {
-        assertEquals("Could not add element.", 0, queue.size());
+        assertEquals(0, queue.size());
         queue.enqueue(Integer.MAX_VALUE);
-        assertEquals("Could not add element.", 1, queue.size());
+        assertEquals(1, queue.size());
         queue.dequeue();
-        assertEquals("Could not add element.", 0, queue.size());
+        assertEquals(0, queue.size());
         for (int i = 0; i < 100; i++) {
             queue.enqueue(1);
             Assert.assertEquals("Size after adding is not right!", i + 1, queue.size());
