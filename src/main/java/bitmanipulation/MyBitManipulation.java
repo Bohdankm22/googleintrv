@@ -2,11 +2,23 @@ package bitmanipulation;
 
 public class MyBitManipulation {
 
+    /**
+     * Sets bit into binary number at the particular position.
+     * @param x binary number to change.
+     * @param position to set a bit.
+     * @return binary number with bit set.
+     */
     public static int setBit(int x, int position) {
         int mask = 1 << position;
         return x | mask;
     }
 
+    /**
+     * Clears bit in binary number at the particular position.
+     * @param x binary number to change.
+     * @param position to clear a bit.
+     * @return binary number with bit cleared.
+     */
     public static int clearBit(int x, int position) {
         int mask = 1 << position;
         return x & ~mask;
