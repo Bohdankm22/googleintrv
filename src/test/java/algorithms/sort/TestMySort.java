@@ -59,10 +59,10 @@ public class TestMySort {
             list.add(i);
         }
         long startTime = System.nanoTime();
-        sort.sort(list);
+        MyList<Integer> sortedList = sort.sort(list);
         System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
         for (int i = 0; i <= size; i++) {
-            int result = list.get(i);
+            int result = sortedList.get(i);
             assertEquals(result, i);
         }
     }
@@ -73,10 +73,10 @@ public class TestMySort {
             list.add(1);
         }
         long startTime = System.nanoTime();
-        sort.sort(list);
+        MyList<Integer> sortedList = sort.sort(list);
         System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
         for (int i = 0; i <= size; i++) {
-            int result = list.get(i);
+            int result = sortedList.get(i);
             assertEquals(result, 1);
         }
     }
@@ -87,10 +87,10 @@ public class TestMySort {
             list.add(i);
         }
         long startTime = System.nanoTime();
-        sort.sort(list);
+        MyList<Integer> sortedList = sort.sort(list);
         System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
         for (int i = 0; i < size; i++) {
-            int result = list.get(i);
+            int result = sortedList.get(i);
             assertEquals(result, i);
         }
     }
@@ -103,8 +103,8 @@ public class TestMySort {
         }
         assertEquals(list.size(), size);
         long startTime = System.nanoTime();
-        sort.sort(list);
+        MyList<Integer> sortedList = sort.sort(list);
         System.out.printf("Sorting took %d milliseconds.", (System.nanoTime() - startTime) / 1000000);
-        assertEquals(list.size(), size);
+        assertEquals(sortedList.size(), size);
     }
 }

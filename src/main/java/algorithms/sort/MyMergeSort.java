@@ -30,10 +30,10 @@ public class MyMergeSort<T extends Comparable<T>> implements Sortable<T> {
 
     private MyList<T> merge(MyList<T> list1, MyList<T> list2) {
         MyList<T> result = new MyArrayList<>();
-        for (int i = 0, j = 0; i < list1.size() & j < list2.size();) {
-            if (i == list1.size() - 1) {
+        for (int i = 0, j = 0; i < list1.size() || j < list2.size();) {
+            if (i == list1.size()) {
                 result.add(list2.get(j++));
-            } else if (j == list2.size() - 1) {
+            } else if (j == list2.size()) {
                 result.add(list1.get(i++));
             } else if (list1.get(i).compareTo(list2.get(j)) < 0) {
                 result.add(list1.get(i++));
