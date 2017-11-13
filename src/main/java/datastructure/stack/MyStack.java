@@ -1,5 +1,14 @@
 package datastructure.stack;
 
-public class MyStack {
+public interface MyStack<T> {
 
+    boolean push(T item);
+
+    T pop();
+
+    boolean isEmpty();
+
+    boolean removeAll();
+
+    int size();
 }
