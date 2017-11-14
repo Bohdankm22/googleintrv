@@ -1,18 +1,13 @@
 package datastructure.tree;
 
-import algorithms.sort.MyInsertionSort;
-import algorithms.sort.MyMergeSort;
-import algorithms.sort.MySelectionSort;
-import algorithms.sort.Sortable;
-import datastructure.list.MyArrayList;
-import datastructure.list.MyLinkedList;
-import datastructure.list.MyList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
 public class TestMyTree {
@@ -31,8 +26,8 @@ public class TestMyTree {
     }
 
     @Test
-    public void testSize() {
-
+    public void testSizeOfEmptyTree() {
+        assertEquals(0, tree.size());
     }
 
 }
