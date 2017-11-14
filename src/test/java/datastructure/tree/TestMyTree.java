@@ -36,4 +36,11 @@ public class TestMyTree {
         assertTrue(tree.empty());
     }
 
+    @Test
+    public void testPutToTree() {
+        assertEquals(0, tree.size());
+        tree.put(1, "Some");
+        assertEquals(1, tree.size());
+    }
+
 }
