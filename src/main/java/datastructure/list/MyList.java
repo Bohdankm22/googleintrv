@@ -1,6 +1,6 @@
 package datastructure.list;
 
-public interface MyList<T> {
+public interface MyList<T> extends Cloneable {
 
     boolean add(T item);
 
@@ -29,4 +29,6 @@ public interface MyList<T> {
     MyList<T> sublist(int numbOfElem);
 
     MyList<T> sublist(int startPosition, int numbOfElem);
+
+    MyList<T> clone();
 }
