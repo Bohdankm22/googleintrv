@@ -5,7 +5,7 @@ import datastructure.exceptions.NotAccessiblePositionException;
 import datastructure.queue.MyQueue;
 import datastructure.stack.MyStack;
 
-public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T> {
+public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T>, Cloneable {
 
     private Node first;
     private Node last;
@@ -207,6 +207,11 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T> {
             result.add(get(startPosition + i));
         }
         return result;
+    }
+
+    @Override
+    public MyLinkedList<T> clone() {
+        return (MyLinkedList<T>) sublist(size());
     }
 
     @Override
