@@ -1,5 +1,6 @@
 package datastructure.tree;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,6 +25,11 @@ public class TestMyTree {
         return Arrays.asList(new Object[][]{
                 {new MyBinaryTree<Integer, String>()},
         });
+    }
+
+    @Before
+    public void executePrerequisites() {
+        tree.removeAll();
     }
 
     @Test

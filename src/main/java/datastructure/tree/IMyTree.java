@@ -11,4 +11,6 @@ public interface IMyTree<K, V> {
     boolean empty();
 
     int size();
+
+    IMyTree<K, V> removeAll();
 }
