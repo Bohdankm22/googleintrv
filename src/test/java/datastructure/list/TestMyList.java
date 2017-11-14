@@ -234,4 +234,18 @@ public class TestMyList {
             assertEquals(i, res);
         }
     }
+
+    @Test
+    public void testClone() {
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+        MyList<Integer> result = list.clone();
+        assertEquals(list.size(), result.size());
+        for (int i = 0; i < 10; i++) {
+            int res = result.get(i);
+            int exp = list.get(i);
+            assertEquals(exp, res);
+        }
+    }
 }
