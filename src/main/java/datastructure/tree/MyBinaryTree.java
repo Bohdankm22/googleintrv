@@ -9,7 +9,6 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
         size = 0;
     }
 
-
     @Override
     public IMyTree<K, V> put(K key, V value) {
         return null;
