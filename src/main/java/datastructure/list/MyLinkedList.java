@@ -225,24 +225,20 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T>, Clone
         T elem;
         Node next;
 
-        public Node(T elem) {
+        private Node(T elem) {
             this.elem = elem;
         }
 
-        public Node getNext() {
+        private Node getNext() {
             return next;
         }
 
-        public void setNext(Node next) {
+        private void setNext(Node next) {
             this.next = next;
         }
 
-        public T getElem() {
+        private T getElem() {
             return elem;
-        }
-
-        public void setElem(T elem) {
-            this.elem = elem;
         }
     }
 }
