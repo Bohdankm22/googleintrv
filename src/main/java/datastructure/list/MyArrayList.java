@@ -3,7 +3,7 @@ package datastructure.list;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
-public class MyArrayList<T> implements MyList<T> {
+public class MyArrayList<T> implements MyList<T>, Cloneable {
 
     private static final int DEFAULT_ARRAY_INIT_SIZE = 16;
     private Object[] internalArray;
@@ -165,6 +165,10 @@ public class MyArrayList<T> implements MyList<T> {
         return result;
     }
 
+    @Override
+    public MyArrayList<T> clone() {
+        return (MyArrayList<T>) sublist(size());
+    }
 
     @Override
     public String toString() {
