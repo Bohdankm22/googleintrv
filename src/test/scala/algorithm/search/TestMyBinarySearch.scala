@@ -22,5 +22,4 @@ class TestMyBinarySearch extends FlatSpec {
   it should "not find the values that are not in the array" in {
     assert(!searchRecursively(arr1, 8))
   }
-
 }
