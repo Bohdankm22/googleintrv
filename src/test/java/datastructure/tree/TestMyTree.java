@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(value = Parameterized.class)
 public class TestMyTree {
@@ -28,6 +29,11 @@ public class TestMyTree {
     @Test
     public void testSizeOfEmptyTree() {
         assertEquals(0, tree.size());
+    }
+
+    @Test
+    public void testEmptyTree() {
+        assertTrue(tree.empty());
     }
 
 }

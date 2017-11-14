@@ -26,7 +26,7 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
     @Override
     public boolean empty() {
-        return false;
+        return size() == 0;
     }
 
     @Override
