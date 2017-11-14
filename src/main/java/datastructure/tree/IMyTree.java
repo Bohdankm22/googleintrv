@@ -1,4 +1,4 @@
-package datastructure;
+package datastructure.tree;
 
 public interface IMyTree<K, V> {
 
