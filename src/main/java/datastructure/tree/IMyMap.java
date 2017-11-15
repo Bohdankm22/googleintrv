@@ -2,9 +2,9 @@ package datastructure.tree;
 
 import datastructure.list.MyList;
 
-public interface IMyTreeMap<K, V> {
+public interface IMyMap<K, V> {
 
-    IMyTreeMap<K, V> put(K key, V value);
+    IMyMap<K, V> put(K key, V value);
 
     V get(K key);
 
@@ -14,7 +14,7 @@ public interface IMyTreeMap<K, V> {
 
     int size();
 
-    IMyTreeMap<K, V> removeAll();
+    IMyMap<K, V> removeAll();
 
     MyList<K> getKeyList();
 }

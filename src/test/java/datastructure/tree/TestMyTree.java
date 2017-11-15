@@ -15,9 +15,9 @@ import static org.junit.Assert.assertTrue;
 @RunWith(value = Parameterized.class)
 public class TestMyTree {
 
-    private IMyTreeMap<Integer, String> tree;
+    private IMyMap<Integer, String> tree;
 
-    public TestMyTree(IMyTreeMap<Integer, String> tree) {
+    public TestMyTree(IMyMap<Integer, String> tree) {
         this.tree = tree;
     }
 
