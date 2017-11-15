@@ -12,7 +12,7 @@ import datastructure.list.MyList;
  * @param <K> represents a key.
  * @param <V> represents a value.
  */
-public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyTreeMap<K, V> {
+public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V> {
 
     /**
      * Refers to the root of the tree. If it is empty the variable keeps null value.
