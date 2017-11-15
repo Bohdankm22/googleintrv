@@ -32,6 +32,16 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
     @Override
     public boolean containsKey(K key) {
+        Node node = root;
+        while (node != null) {
+            if (node.getKey().compareTo(key) == 0) {
+                return true;
+            } else if (node.getKey().compareTo(key) > 0) {
+                node = node.getLeftChild();
+            } else {
+                node = node.getRightChild();
+            }
+        }
         return false;
     }
 
