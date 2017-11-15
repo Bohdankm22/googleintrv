@@ -1,6 +1,6 @@
 package datastructure.set;
 
-public interface MySet<E> {
+public interface MySet<E extends Comparable<E>> {
 
     MySet<E> put(E elem);
 
