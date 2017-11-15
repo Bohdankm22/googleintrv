@@ -3,6 +3,7 @@ package datastructure.map;
 import datastructure.exceptions.WrongPositionException;
 import datastructure.list.MyArrayList;
 import datastructure.list.MyList;
+import datastructure.tree.ITree;
 
 /**
  * My implementation of the binary tree.
@@ -12,7 +13,7 @@ import datastructure.list.MyList;
  * @param <K> represents a key.
  * @param <V> represents a value.
  */
-public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V> {
+public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V>, ITree<K> {
 
     /**
      * Refers to the root of the tree. If it is empty the variable keeps null value.
@@ -137,6 +138,35 @@ public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V>
             resultList.addAll(getKeyList(node.getRightChild()));
         }
         return resultList;
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
+
+    @Override
+    public K getMin() {
+        Node node = size == 0 ? null : root;
+        while (node != null) {
+            if (node.getLeftChild() == null) {
+                return node.getKey();
+            }
+            node = node.getLeftChild();
+        }
+        return null;
+    }
+
+    @Override
+    public K getMax() {
+        Node node = size == 0 ? null : root;
+        while (node != null) {
+            if (node.getRightChild() == null) {
+                return node.getKey();
+            }
+            node = node.getRightChild();
+        }
+        return null;
     }
 
     /**
