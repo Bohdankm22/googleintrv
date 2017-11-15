@@ -62,6 +62,13 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "MyBinaryTree{" +
+                "size=" + size +
+                '}';
+    }
+
     private class Node {
         private K key;
         private V value;
