@@ -3,6 +3,8 @@ package datastructure.list;
 import datastructure.exceptions.NoElementAtPositionException;
 import datastructure.exceptions.NotAccessiblePositionException;
 
+import java.util.Arrays;
+
 public class MyArrayList<T> implements MyList<T>, Cloneable {
 
     private static final int DEFAULT_ARRAY_INIT_SIZE = 16;
@@ -174,6 +176,20 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
     public boolean addAll(MyList<T> list) {
         for (int i = 0; i < list.size(); i++) {
             add(list.get(i));
+        }
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyList<?> that = (MyList<?>) o;
+
+        if (size() != that.size()) return false;
+        for (int i = 0; i < size(); i++) {
+            if (!this.get(i).equals(that.get(i))) return false;
         }
         return true;
     }

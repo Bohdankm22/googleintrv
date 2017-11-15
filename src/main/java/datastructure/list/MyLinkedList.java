@@ -223,6 +223,20 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T>, Clone
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyList<?> that = (MyList<?>) o;
+
+        if (size() != that.size()) return false;
+        for (int i = 0; i < size(); i++) {
+            if (!this.get(i).equals(that.get(i))) return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "MyLinkedList{" +
                 "size=" + size +
