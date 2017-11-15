@@ -1,4 +1,4 @@
-package datastructure.tree;
+package datastructure.map;
 
 import datastructure.list.MyList;
 
@@ -13,6 +13,8 @@ public interface IMyMap<K, V> {
     boolean empty();
 
     int size();
+
+    V remove(K key);
 
     IMyMap<K, V> removeAll();
 

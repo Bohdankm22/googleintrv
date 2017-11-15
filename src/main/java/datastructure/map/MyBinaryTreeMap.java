@@ -1,4 +1,4 @@
-package datastructure.tree;
+package datastructure.map;
 
 import datastructure.exceptions.WrongPositionException;
 import datastructure.list.MyArrayList;
@@ -101,6 +101,11 @@ public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V>
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public V remove(K key) {
+        return null;
     }
 
     @Override
