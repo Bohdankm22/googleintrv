@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -46,7 +47,11 @@ public class TestMyTree {
     public void testPutToTree() {
         assertEquals(0, tree.size());
         tree.put(1, "Some");
-        assertEquals(1, tree.size());
+        Random random = new Random();
+        for (int i = 1; i < 100; i++) {
+            assertEquals(i, tree.size());
+            tree.put(random.nextInt(200), "Something");
+        }
     }
 
 }
