@@ -1,5 +1,7 @@
 package datastructure.tree;
 
+import datastructure.exceptions.WrongPositionException;
+
 /**
  * My implementation of the binary tree.
  * Duplicate keys are not allowed. In case of passing key that already exists the value of associated with the key
@@ -28,14 +30,28 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
 
     @Override
-    public IMyTree<K, V> put(K key, V value) {
+    public MyBinaryTree<K, V> put(K key, V value) {
         Node parentNode = size == 0 ? null : findParent(key);
         if (parentNode != null && parentNode.getKey().compareTo(key) == 0) {
             parentNode.setValue(value);
         } else {
-            root = parentNode == null ? new Node(key, value, null) : new Node(key, value, findParent(key));
-            size++;
+            return put(key, value, parentNode);
         }
+        return this;
+    }
+
+    private MyBinaryTree<K, V> put(K key, V value, Node parentNode) {
+        Node node = new Node(key, value, parentNode);
+        if (parentNode == null) {
+            root = node;
+        } else if (parentNode.getKey().compareTo(key) > 0) {
+            parentNode.setLeftChild(node);
+        } else if (parentNode.getKey().compareTo(key) < 0) {
+            parentNode.setRightChild(node);
+        } else {
+            throw new WrongPositionException();
+        }
+        size++;
         return this;
     }
 
