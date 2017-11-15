@@ -1,8 +1,8 @@
 package datastructure.tree;
 
-public interface IMyTree<K, V> {
+public interface IMyTreeMap<K, V> {
 
-    IMyTree<K, V> put(K key, V value);
+    IMyTreeMap<K, V> put(K key, V value);
 
     V get(K key);
 
@@ -12,5 +12,5 @@ public interface IMyTree<K, V> {
 
     int size();
 
-    IMyTree<K, V> removeAll();
+    IMyTreeMap<K, V> removeAll();
 }

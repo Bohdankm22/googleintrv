@@ -10,7 +10,7 @@ import datastructure.exceptions.WrongPositionException;
  * @param <K> represents a key.
  * @param <V> represents a value.
  */
-public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
+public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyTreeMap<K, V> {
 
     /**
      * Refers to the root of the tree. If it is empty the variable keeps null value.
@@ -24,13 +24,13 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
     /**
      * Constructor without arguments.
      */
-    public MyBinaryTree() {
+    public MyBinaryTreeMap() {
         size = 0;
     }
 
 
     @Override
-    public MyBinaryTree<K, V> put(K key, V value) {
+    public MyBinaryTreeMap<K, V> put(K key, V value) {
         Node parentNode = size == 0 ? null : findParent(key);
         if (parentNode != null && parentNode.getKey().compareTo(key) == 0) {
             parentNode.setValue(value);
@@ -40,7 +40,7 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
         return this;
     }
 
-    private MyBinaryTree<K, V> put(K key, V value, Node parentNode) {
+    private MyBinaryTreeMap<K, V> put(K key, V value, Node parentNode) {
         Node node = new Node(key, value, parentNode);
         if (parentNode == null) {
             root = node;
@@ -102,7 +102,7 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
     }
 
     @Override
-    public MyBinaryTree<K, V> removeAll() {
+    public MyBinaryTreeMap<K, V> removeAll() {
         root = null;
         size = 0;
         return this;
@@ -110,7 +110,7 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
     @Override
     public String toString() {
-        return "MyBinaryTree{" +
+        return "MyBinaryTreeMap{" +
                 "size=" + size +
                 '}';
     }
