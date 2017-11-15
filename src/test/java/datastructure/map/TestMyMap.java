@@ -1,4 +1,4 @@
-package datastructure.tree;
+package datastructure.map;
 
 import algorithms.sort.MyMergeSort;
 import datastructure.list.MyArrayList;
