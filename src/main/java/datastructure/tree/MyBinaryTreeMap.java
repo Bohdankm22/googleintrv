@@ -1,6 +1,8 @@
 package datastructure.tree;
 
 import datastructure.exceptions.WrongPositionException;
+import datastructure.list.MyArrayList;
+import datastructure.list.MyList;
 
 /**
  * My implementation of the binary tree.
@@ -111,8 +113,25 @@ public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyTreeMap<K
     @Override
     public String toString() {
         return "MyBinaryTreeMap{" +
-                "size=" + size +
-                '}';
+                "size = " + size + (size > 0 ?
+                "nodes keys = {" + getKeyList() + "}" : "" ) +'}';
+    }
+
+    @Override
+    public MyList<K> getKeyList() {
+        return size == 0 ? new MyArrayList<>() : getKeyList(root);
+    }
+
+    private MyList<K> getKeyList(Node node) {
+        MyList<K> resultList = new MyArrayList<>();
+        if (node.getLeftChild() != null) {
+            resultList.addAll(getKeyList(node.getLeftChild()));
+        }
+        resultList.add(node.getKey());
+        if (node.getRightChild() != null) {
+            resultList.addAll(getKeyList(node.getRightChild()));
+        }
+        return resultList;
     }
 
     /**
