@@ -54,4 +54,13 @@ public class TestMyTree {
         }
     }
 
+    @Test
+    public void testContains() {
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            int numb = random.nextInt(99999);
+            tree.put(numb, "Something");
+            assertTrue(tree.containsKey(numb));
+        }
+    }
 }
