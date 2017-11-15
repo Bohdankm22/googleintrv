@@ -1,5 +1,8 @@
 package datastructure.tree;
 
+import algorithms.sort.MyMergeSort;
+import datastructure.list.MyArrayList;
+import datastructure.list.MyList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -73,5 +76,15 @@ public class TestMyMap {
         }
     }
 
-
+    @Test
+    public void testKeyList() {
+        int[] array = {21, 22, 33, 4, 2892, 154, 1, 122};
+        MyList<Integer> list = new MyArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            tree.put(array[i], "");
+            list.add(array[i]);
+        }
+        list = new MyMergeSort<Integer>().sort(list);
+        assertEquals(list, tree.getKeyList());
+    }
 }
