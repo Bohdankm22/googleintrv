@@ -13,15 +13,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(value = Parameterized.class)
-public class TestMyTree {
+public class TestMyMap {
 
     private IMyMap<Integer, String> tree;
 
-    public TestMyTree(IMyMap<Integer, String> tree) {
+    public TestMyMap(IMyMap<Integer, String> tree) {
         this.tree = tree;
     }
 
-    @Parameterized.Parameters(name = "{index}: test tree {0}")
+    @Parameterized.Parameters(name = "{index}: test map {0}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {new MyBinaryTreeMap<Integer, String>()},
@@ -34,17 +34,17 @@ public class TestMyTree {
     }
 
     @Test
-    public void testSizeOfEmptyTree() {
+    public void testSizeOfEmptyMap() {
         assertEquals(0, tree.size());
     }
 
     @Test
-    public void testEmptyTree() {
+    public void testEmptyMap() {
         assertTrue(tree.empty());
     }
 
     @Test
-    public void testPutToTree() {
+    public void testPutToMap() {
         assertEquals(0, tree.size());
         tree.put(0, "Some");
         for (int i = 1; i < 100; i++) {
