@@ -1,13 +1,31 @@
 package datastructure.tree;
 
+/**
+ * My implementation of the binary tree.
+ * Duplicate keys are not allowed. In case of passing key that already exists the value of associated with the key
+ * will be changed to the value that was passed.
+ *
+ * @param <K> represents a key.
+ * @param <V> represents a value.
+ */
 public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
+    /**
+     * Refers to the root of the tree. If it is empty the variable keeps null value.
+     */
     private Node root;
+    /**
+     * Stores the size of the tree.
+     */
     private int size;
 
+    /**
+     * Constructor without arguments.
+     */
     public MyBinaryTree() {
         size = 0;
     }
+
 
     @Override
     public IMyTree<K, V> put(K key, V value) {
@@ -81,6 +99,10 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
                 '}';
     }
 
+    /**
+     * Private internal class that represents nodes of the tree.
+     * Contains key, value, links to the parent node and left and right children nodes which could be null.
+     */
     private class Node {
         private K key;
         private V value;
