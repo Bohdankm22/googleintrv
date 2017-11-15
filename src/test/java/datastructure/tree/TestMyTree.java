@@ -62,4 +62,14 @@ public class TestMyTree {
             assertTrue(tree.containsKey(numb));
         }
     }
+
+    @Test
+    public void testPuttingDuplicate() {
+        tree.put(333, "Some");
+        assertEquals(1, tree.size());
+        for (int i = 0; i < 100; i++) {
+            tree.put(333, "Something" + i);
+            assertEquals(1, tree.size());
+        }
+    }
 }
