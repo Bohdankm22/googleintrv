@@ -3,8 +3,6 @@ package datastructure.map;
 import algorithms.sort.MyMergeSort;
 import datastructure.list.MyArrayList;
 import datastructure.list.MyList;
-import datastructure.map.IMyMap;
-import datastructure.map.MyBinaryTreeMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
