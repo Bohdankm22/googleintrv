@@ -80,8 +80,6 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
             this.key = key;
             this.value = value;
             this.parent = parent;
-            this.leftChild = leftChild;
-            this.rightChild = rightChild;
         }
 
         public K getKey() {
