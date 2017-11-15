@@ -11,16 +11,28 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
     @Override
     public IMyTree<K, V> put(K key, V value) {
-        Node node = size == 0 ? new Node(key, value, null) : new Node(key, value, findParent(key));
-        root = node;
-        size++;
+        Node parentNode = size == 0 ? null : findParent(key);
+        if (parentNode != null && parentNode.getKey().compareTo(key) == 0) {
+            parentNode.setValue(value);
+        } else {
+            root = parentNode == null ? new Node(key, value, null) : new Node(key, value, findParent(key));
+            size++;
+        }
         return this;
     }
 
     private Node findParent(K key) {
         Node node = root;
-        while (node != null) {
-            node = node.getKey().compareTo(key) > 0 ? node.getLeftChild() : node.getRightChild();
+        while (true) {
+            if (node.getKey().compareTo(key) == 0) {
+                break;
+            } else if (node.getKey().compareTo(key) > 0 && node.getLeftChild() != null) {
+                node = node.getLeftChild();
+            } else if (node.getKey().compareTo(key) < 0 && node.getRightChild() != null) {
+                node = node.getRightChild();
+            } else {
+                break;
+            }
         }
         return node;
     }
@@ -108,6 +120,10 @@ public class MyBinaryTree<K extends Comparable<K>, V> implements IMyTree<K, V> {
 
         public void setRightChild(Node rightChild) {
             this.rightChild = rightChild;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
         }
     }
 }
