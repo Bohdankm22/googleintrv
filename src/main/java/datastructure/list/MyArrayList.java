@@ -171,6 +171,14 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
     }
 
     @Override
+    public boolean addAll(MyList<T> list) {
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "MyArrayList{" +
                 "size=" + size() +

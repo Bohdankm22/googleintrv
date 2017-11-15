@@ -31,4 +31,6 @@ public interface MyList<T> extends Cloneable {
     MyList<T> sublist(int startPosition, int numbOfElem);
 
     MyList<T> clone();
+
+    boolean addAll(MyList<T> list);
 }

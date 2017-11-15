@@ -215,6 +215,14 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T>, MyStack<T>, Clone
     }
 
     @Override
+    public boolean addAll(MyList<T> list) {
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "MyLinkedList{" +
                 "size=" + size +
