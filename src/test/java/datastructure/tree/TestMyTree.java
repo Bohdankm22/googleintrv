@@ -46,11 +46,10 @@ public class TestMyTree {
     @Test
     public void testPutToTree() {
         assertEquals(0, tree.size());
-        tree.put(1, "Some");
-        Random random = new Random();
+        tree.put(0, "Some");
         for (int i = 1; i < 100; i++) {
             assertEquals(i, tree.size());
-            tree.put(random.nextInt(200), "Something");
+            tree.put(i, "Something");
         }
     }
 
