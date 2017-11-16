@@ -7,4 +7,6 @@ public interface ITree<K extends Comparable<K>> {
     K getMin();
 
     K getMax();
+
+    ITree<K> removeAll();
 }
