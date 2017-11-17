@@ -147,6 +147,7 @@ public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V>
 
     @Override
     public int getHeight() {
+        if (size == 0) return 0;
         return 0;
     }
 
