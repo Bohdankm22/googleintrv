@@ -148,7 +148,19 @@ public class MyBinaryTreeMap<K extends Comparable<K>, V> implements IMyMap<K, V>
     @Override
     public int getHeight() {
         if (size == 0) return 0;
-        return 0;
+        return getHeight(root, 1);
+    }
+
+    private int getHeight(Node node, int i) {
+        int left = i;
+        int right = i;
+        if (node.getLeftChild() != null) {
+            left = getHeight(node.getLeftChild(), i + 1);
+        }
+        if (node.getRightChild() != null) {
+            right = getHeight(node.getRightChild(), i + 1);
+        }
+        return left >= right ? left : right;
     }
 
     @Override
