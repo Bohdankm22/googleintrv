@@ -41,10 +41,11 @@ public class TestMySort {
                 {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 100},
                 {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 101},
                 {new MyMergeSort<Integer>(), new MyArrayList<Integer>(), 10000},
-                {new MyMergeSort<Integer>(), new MyLinkedList<Integer>(), 100}
-//                {new MyHeapSort<Integer>(), new MyArrayList<Integer>(), 100},
-//                {new MyHeapSort<Integer>(), new MyArrayList<Integer>(), 10000},
-//                {new MyHeapSort<Integer>(), new MyLinkedList<Integer>(), 100}
+                {new MyMergeSort<Integer>(), new MyLinkedList<Integer>(), 100},
+                {new MyQuickSort<>(), new MyArrayList<Integer>(), 100},
+                {new MyQuickSort<Integer>(), new MyArrayList<Integer>(), 101},
+                {new MyQuickSort<Integer>(), new MyArrayList<Integer>(), 10000},
+                {new MyQuickSort<Integer>(), new MyLinkedList<Integer>(), 100}
         });
     }
 
