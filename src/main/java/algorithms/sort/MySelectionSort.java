@@ -30,7 +30,7 @@ public class MySelectionSort<T extends Comparable<T>> implements Sortable<T> {
      * @param list for swapping.
      * @return true if elements were swapped.
      */
-    private boolean swap(MyList<T> list, int position1, int position2) {
+    public static <T> boolean swap(MyList<T> list, int position1, int position2) {
         if (position1 == position2) {
             return false;
         }
